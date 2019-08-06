@@ -8,9 +8,8 @@
     "react-dom": "^16.8.6",
     "react-p5": "^1.0.5",
     "react-p5-wrapper": "^2.0.0",
-    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-style-reset": "^1.2.11",
     "styled-components": "^4.3.2"
   },
   "scripts": {
