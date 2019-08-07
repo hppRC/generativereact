@@ -3,7 +3,6 @@ const testSketch = (p) => {
 
     p.setup = () => {
         p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL)
-
     }
 
     p.myCustomRedrawAccordingToNewPropsHandler = (props) => {
