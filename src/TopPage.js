@@ -6,6 +6,12 @@ import TopTheme from './TopTheme'
 
 const TopPage = () => (
     <TopTheme>
+        <div>
+        <style>
+@import url('https://fonts.googleapis.com/css?family=Lexend+Giga|Patua+One|Raleway|Saira+Stencil+One&display=swap');
+</style>
+            <h1>Genarative<br />React</h1>
+        </div>
         <P5Wrapper sketch={topSketch} />
     </TopTheme>
 )
