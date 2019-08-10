@@ -1,12 +1,16 @@
-import React, { Fragment } from 'react'
-import TopPage from './TopPage'
+import React from 'react'
+import {
+	BrowserRouter as Router,
+	Route
+} from 'react-router-dom'
 import { Reset } from 'styled-reset'
+import TopPage from './components/TopPage'
 
 const App = () => (
-	<Fragment>
+	<Router>
 		<Reset />
-		<TopPage />
-	</Fragment>
+		<Route path='/' component={TopPage}/>
+	</Router>
 )
 
 
