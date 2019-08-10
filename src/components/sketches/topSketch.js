@@ -1,6 +1,6 @@
 const topSketch = (p) => {
     let cols, rows  //１行, 1列あたりのタイル数を格納
-    const scl = 25  //タイルのサイズを指定
+    const scl = 15  //タイルのサイズを指定
     let terrain     //タイルの情報を格納する2次元配列
 
     let xoff
@@ -17,7 +17,6 @@ const topSketch = (p) => {
         for (let i = 0; i < cols; i++) {
             terrain[i] = new Array(rows).fill(0)
         }
-        p.frameRate(30)
     }
 
     p.draw = () => {
@@ -25,9 +24,9 @@ const topSketch = (p) => {
 
         xoff = flying
         for (let x = 0; x < cols; x++) {
-            yoff = xoff
+            yoff = 0
             for (let y = 0; y < rows; y++) {
-                terrain[x][y] = p.map(p.noise(xoff, yoff), 0, 1, -150, 150)
+                terrain[x][y] = p.map(p.noise(xoff, yoff), 0, 1, -150, 200)
                 xoff += 0.1
             }
             yoff += 0.1
@@ -38,8 +37,8 @@ const topSketch = (p) => {
         p.stroke(155)
         p.noFill()
 
-        p.rotateX(p.PI/2.5)
-        p.translate(-p.width/2, -p.height/2+3*scl)
+        p.rotateX(p.PI/2.6)
+        p.translate(-(scl*cols)/2, -(scl*rows)/2+3*scl)
 
         for (let y = 0; y < rows - 1; y++) {
             p.beginShape(p.TRIANGLE_STRIP)

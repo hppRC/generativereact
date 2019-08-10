@@ -6962,6 +6962,11 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
+p5@0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/p5/-/p5-0.9.0.tgz#a4431bf2a0ff6ede06e2c512faddb495c3332504"
+  integrity sha512-N8FzKr9SKofl4f+d9g6oYDRk5JOYgY1bIhCInzNxW7khc1zk7whQIOhaHeijSslfN3rJYfWso6Fn3O/w+TCwLg==
+
 p5@^0.7.3:
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/p5/-/p5-0.7.3.tgz#a0660327feb8da3e43359a16ad62566b96a7cabe"
@@ -8157,17 +8162,22 @@ react-error-overlay@^5.1.6:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
   integrity sha512-X1Y+0jR47ImDVr54Ab6V9eGk0Hnu7fVWGeHQSOXHf/C2pF9c6uy3gef8QUeuUiWlNb0i08InPSE5a/KJzNzw1Q==
 
-react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.4:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
+
+react-is@^16.8.1:
+  version "16.9.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
+  integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
 react-p5-wrapper@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-p5-wrapper/-/react-p5-wrapper-2.0.0.tgz#3c7882be616713a82b8c3121873dc6f8b3f1151c"
   integrity sha512-oQvYEUAnAtquYoQvd7p5MdtzuSQX7cmcdDLJ3R22R4aSRiiUGyjicSYmY/m2aIVK6iegmA0s0/wuT1g3yl2MxQ==
 
-react-p5@^1.0.5:
+react-p5@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-p5/-/react-p5-1.0.5.tgz#bb8bd1d8827f017b2013db3efc63cf410d113e21"
   integrity sha512-wjfzlCornd8Y+elkupP7YQsC4BK3c8TsGHanA2oOxz1ZtQfez1/l4ndvMWCmWPavgn/6NuBE/GxiWfpqK+rlcQ==
