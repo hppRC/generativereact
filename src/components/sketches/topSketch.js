@@ -38,7 +38,7 @@ const topSketch = (p) => {
         p.noFill()
 
         p.rotateX(p.PI/2.6)
-        p.translate(-(scl*cols)/2, -(scl*rows)/2+3*scl)
+        p.translate(-(scl*cols)/2, -(scl*rows)/2+7*scl)
 
         for (let y = 0; y < rows - 1; y++) {
             p.beginShape(p.TRIANGLE_STRIP)
