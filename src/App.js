@@ -6,13 +6,16 @@ import {
 } from 'react-router-dom'
 import { Reset } from 'styled-reset'
 import TopPage from './components/pages/TopPage'
+import WorksList from './components/pages/WorksList'
 import Works from './Works'
+
 
 const App = () => (
 	<Router>
 		<Reset />
 		<Switch>
 			<Route exact path='/' component={TopPage}/>
+			<Route exact path='/works' component={WorksList}/>
 			<Route path='/:id' component={Works} />
 		</Switch>
 	</Router>

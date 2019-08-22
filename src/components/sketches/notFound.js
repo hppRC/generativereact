@@ -1,8 +1,8 @@
 const notFound = (p) => {
 
     let letters = []
-    let density = 2.5
-    let ribbonWidth = 92
+    let density = 2
+    let ribbonWidth = 62
     let pathSampleFactor = 0.1
     
     let textTyped = '404'
