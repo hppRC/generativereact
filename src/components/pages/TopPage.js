@@ -12,7 +12,7 @@ const TopPage = () => (
         @import url('https://fonts.googleapis.com/css?family=Lexend+Giga|Patua+One|Raleway|Saira+Stencil+One&display=swap');
         </style>
             <Link to='/works'>
-                <div class="title">
+                <div className="title">
                     <h1>Genarative<br />React</h1>
                     <p>click here</p>
                 </div>

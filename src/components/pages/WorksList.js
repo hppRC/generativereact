@@ -2,15 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import P5Wrapper from 'react-p5-wrapper'
 import worksListSketch from '../sketches/worksListSketch'
-import WorksListTheme from 'components/themes/WorksListTheme';
+import WorksListTheme from 'components/themes/WorksListTheme'
 
 const WorksList = () => (
     <WorksListTheme>
         <div>
             <div>
                 <ul>
-                    <li><Link to='/1'>work 1</Link></li>
-                    <li><Link to='/2'>work 2</Link></li>
+                    <li><Link to='/1' >work 1</Link></li>
+                    <li><Link to='/2' >work 2</Link></li>
                 </ul>
             </div>
             <P5Wrapper sketch={worksListSketch} />

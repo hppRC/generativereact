@@ -11,12 +11,12 @@ import Works from './Works'
 
 
 const App = () => (
-	<Router>
+	<Router basename={process.env.PUBLIC_URL}>
 		<Reset />
 		<Switch>
 			<Route exact path='/' component={TopPage}/>
 			<Route exact path='/works' component={WorksList}/>
-			<Route path='/:id' component={Works} />
+			<Route exact path='/:id' component={Works} />
 		</Switch>
 	</Router>
 )

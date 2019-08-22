@@ -12,7 +12,7 @@ const notFound = (p) => {
     let font
 
     p.preload = () => {
-        font = p.loadFont('../fonts/Anton-Regular.ttf')
+        font = p.loadFont('./Anton-Regular.ttf')
     }
 
     p.setup = () => {
@@ -49,7 +49,6 @@ const notFound = (p) => {
                 const charsBefore = textTyped.substring(0, i)
                 x = font.textBounds(charsBefore, 0, 0, fontSize).w
             }
-            console.log(chars[i], x, 0)
             const newLetter = new Letter(chars[i], x, 0)
 
             letters.push(newLetter)
@@ -78,7 +77,6 @@ const notFound = (p) => {
                         const p0 = p.createVector(pos.x, pos.y)
                         const p1 = p.createVector(nextPos.x, nextPos.y)
                         const v = p1.sub(p0)
-                        console.log(v)
                         v.normalize()
                         v.rotate(p.HALF_PI)
                         v.mult(d)
