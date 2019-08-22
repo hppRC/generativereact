@@ -9,8 +9,8 @@ const WorksList = () => (
         <div>
             <div>
                 <ul>
-                    <li><Link to='/1' >work 1</Link></li>
-                    <li><Link to='/2' >work 2</Link></li>
+                    <li><Link to='/works/1' >work 1</Link></li>
+                    <li><Link to='/works/2' >work 2</Link></li>
                 </ul>
             </div>
             <P5Wrapper sketch={worksListSketch} />
