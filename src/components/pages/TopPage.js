@@ -1,7 +1,7 @@
 import React from 'react'
 import P5Wrapper from 'react-p5-wrapper'
-import topSketch from './sketches/topSketch'
-import TopTheme from './themes/TopTheme'
+import topSketch from '../sketches/topSketch'
+import TopTheme from '../themes/TopTheme'
 
 
 const TopPage = () => (
