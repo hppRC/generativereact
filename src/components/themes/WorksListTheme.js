@@ -6,7 +6,7 @@ const WorksListTheme = styled.div`
     height: 100vw;
     position: absolute;
     display: flex;
-    
+
     padding: 3rem;
     font-size: 2rem;
     color: #fff;
