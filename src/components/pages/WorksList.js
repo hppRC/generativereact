@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import P5Wrapper from 'react-p5-wrapper';
 import worksListSketch from '../sketches/worksListSketch';
 import WorksListTheme from 'components/themes/WorksListTheme';
+import componentsList from '../../componentsList';
 
 const WorksLink = props => (
 	<li>
@@ -10,17 +11,18 @@ const WorksLink = props => (
 	</li>
 );
 
+const Items = () => (
+	<ul>
+		{Object.keys(componentsList).map(id => (
+			<WorksLink to={id}>work {id}</WorksLink>
+		))}
+	</ul>
+);
+
 const WorksList = () => (
 	<WorksListTheme>
-		<div>
-			<ul>
-				<WorksLink to='1'>work 1</WorksLink>
-				<WorksLink to='2'>work 2</WorksLink>
-				<WorksLink to='3'>work 3</WorksLink>
-				<WorksLink to='4'>work 4</WorksLink>
-			</ul>
-			<P5Wrapper sketch={worksListSketch} />
-		</div>
+		<Items />
+		<P5Wrapper sketch={worksListSketch} />
 	</WorksListTheme>
 );
 
