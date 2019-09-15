@@ -6,8 +6,10 @@ import WorksList from './components/pages/WorksList';
 import NotFound from './components/pages/NotFound';
 import Works from './Works';
 
+//basename={process.env.PUBLIC_URL}
+
 const App = () => (
-	<Router basename={process.env.PUBLIC_URL}>
+	<Router>
 		<Reset />
 		<Switch>
 			<Route exact path='/' component={TopPage} />

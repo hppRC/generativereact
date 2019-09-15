@@ -18,7 +18,7 @@ const sketch4 = p => {
 		p.colorMode(p.HSB, 360, 100, 100, 100);
 		p.angleMode(p.DEGREES);
 		p.background('#121212');
-		count = 10;
+		count = p.int(p.random(1, 15));
 		for (let j = 0; j < count; j++) {
 			for (let i = 0; i < count; i++) {
 				x = (i * p.width) / count;

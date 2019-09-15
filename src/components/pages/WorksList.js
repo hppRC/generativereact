@@ -16,6 +16,7 @@ const Items = () => (
 		{Object.keys(componentsList).map(id => (
 			<WorksLink to={id}>work {id}</WorksLink>
 		))}
+		<WorksLink to={Object.keys(componentsList) + 1}>work 404</WorksLink>
 	</ul>
 );
 
