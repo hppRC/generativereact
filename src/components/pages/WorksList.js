@@ -17,6 +17,7 @@ const WorksList = () => (
 				<WorksLink to='1'>work 1</WorksLink>
 				<WorksLink to='2'>work 2</WorksLink>
 				<WorksLink to='3'>work 3</WorksLink>
+				<WorksLink to='4'>work 4</WorksLink>
 			</ul>
 			<P5Wrapper sketch={worksListSketch} />
 		</div>

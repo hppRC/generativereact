@@ -30,6 +30,8 @@ const notFound = p => {
 
 		p.translate(100, p.height * 0.75);
 
+//const shift = p.abs((p.millis() % p.width) - p.width / 2) - p.width / 4;
+
 		pathSampleFactor = 0.1 * p.pow(0.02, p.mouseX / p.width);
 		ribbonWidth = p.map(p.mouseY, 0, p.height, 1, 200);
 
