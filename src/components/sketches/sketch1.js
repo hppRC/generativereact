@@ -5,11 +5,13 @@ const sketch1 = p => {
 	const WEST = 3;
 	let direction = SOUTH;
 
-	const stepSize = 10;
-	const minLength = 10;
+	const stepSize = 30;
+	const minLength = 30;
 	const angleCount = 7;
 	let angle;
 	let reachedBorder = false;
+
+	const speed = 1;
 
 	let posX;
 	let posY;
@@ -26,16 +28,14 @@ const sketch1 = p => {
 		posY = 5;
 		posXcross = posX;
 		posYcross = posY;
-
-		p.frameRate(60);
 	};
 
 	p.draw = () => {
-		const speed = p.int(p.map(p.mouseX, 0, p.width, 0, 50));
 		for (let i = 0; i <= speed; i++) {
 			p.strokeWeight(3);
 			p.stroke(0, 0, 360);
 			p.point(posX, posY);
+			p.point(p.width - posX, p.height - posY);
 
 			posX += p.cos(p.radians(angle)) * stepSize;
 			posY += p.sin(p.radians(angle)) * stepSize;
