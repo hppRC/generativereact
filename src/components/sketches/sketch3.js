@@ -5,10 +5,8 @@ const sketch3 = p => {
 	const noiseStrength = 10;
 	const noiseZRange = 0.5;
 	const noiseZVelocity = 0.01;
-	const overlayAlpha = 0.1;
 	const agentAlpha = 90;
-	const strokeWidth = 0.1;
-	let drawMode = 1;
+	const strokeWidth = 1;
 	let count = 0;
 
 	p.setup = () => {
@@ -20,30 +18,18 @@ const sketch3 = p => {
 
 	p.draw = () => {
 		p.background(0);
-		p.fill(0, overlayAlpha);
-		p.noStroke();
-		p.rect(0, 0, p.width, p.height);
 
 		p.stroke(255, agentAlpha);
 		for (let i = 0; i < agentCount; i++) {
-			if (drawMode === 1) {
-				agents[i].update1(
-					strokeWidth,
-					noiseScale,
-					noiseStrength,
-					noiseZVelocity
-				);
-			} else {
-				agents[i].update2(
-					strokeWidth,
-					noiseScale,
-					noiseStrength,
-					noiseZVelocity
-				);
-			}
+			agents[i].update1(
+				strokeWidth,
+				noiseScale,
+				noiseStrength,
+				noiseZVelocity
+			);
 		}
 		count += 1;
-		if (count >= 100) {
+		if (count >= 300) {
 			count = 0;
 			const newNoiseSeed = p.floor(p.random(10000));
 			p.noiseSeed(newNoiseSeed);
@@ -54,8 +40,6 @@ const sketch3 = p => {
 	p.keyReleased = () => {
 		if (p.key === 's' || p.key === 'S')
 			p.saveCanvas(p.gd.timestamp(), 'png');
-		if (p.key === '1') drawMode = 1;
-		if (p.key === '2') drawMode = 2;
 		if (p.key === ' ') {
 			const newNoiseSeed = p.floor(p.random(10000));
 			p.noiseSeed(newNoiseSeed);
@@ -104,17 +88,6 @@ const sketch3 = p => {
 					this.vector.y / noiseScale,
 					this.noiseZ
 				) * noiseStrength;
-			this.update(strokeWidth, noiseZVelocity);
-		};
-
-		update2 = (strokeWidth, noiseScale, noiseStrength, noiseZVelocity) => {
-			this.angle =
-				p.noise(
-					this.vector.x / noiseScale,
-					this.vector.y / noiseScale,
-					this.noiseZ
-				) * p.millis();
-			this.angle = (this.angle - p.floor(this.angle)) * noiseStrength;
 			this.update(strokeWidth, noiseZVelocity);
 		};
 	}

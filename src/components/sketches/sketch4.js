@@ -3,6 +3,8 @@ const sketch4 = p => {
 	let y;
 
 	let count;
+	let row;
+	let col;
 	let times = 0;
 
 	let colors = [
@@ -14,17 +16,19 @@ const sketch4 = p => {
 	];
 
 	p.setup = () => {
-		p.createCanvas(p.windowWidth, p.windowWidth);
+		p.createCanvas(p.windowWidth, p.windowHeight);
 		p.colorMode(p.HSB, 360, 100, 100, 100);
 		p.angleMode(p.DEGREES);
 		p.background('#121212');
 		count = p.int(p.random(1, 15));
-		for (let j = 0; j < count; j++) {
-			for (let i = 0; i < count; i++) {
-				x = (i * p.width) / count;
-				y = (j * p.height) / count;
+		col = count;
+		row = p.height / (p.width / col);
+		for (let j = 0; j < row; j++) {
+			for (let i = 0; i < col; i++) {
+				x = (i * p.width) / col;
+				y = (j * p.height) / row;
 
-				const d = p.width / count;
+				const d = p.width / col;
 				const h = d / 2;
 				const angle = p.int(p.random(4)) * 90;
 
@@ -98,9 +102,9 @@ const sketch4 = p => {
 	};
 
 	p.draw = () => {
-		p.background('#12121209');
+		p.background('#12121204');
 		times += 1;
-		if (times > 70) {
+		if (times > 140) {
 			times = 0;
 			p.setup();
 		}
