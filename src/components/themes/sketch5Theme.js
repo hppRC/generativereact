@@ -1,15 +1,24 @@
 import styled from 'styled-components';
 
-export const FollowerTheme = styled.div`
-	border-radius: 50%;
-	position: absolute;
-	top: 0;
-	left: 0;
+const Sketch5Theme = styled.div`
+	width: 100vw;
+	height: 100vh;
+	background-color: #000;
+	z-index: -1;
 	cursor: none;
-	posinter-events: none;
-
-	width: 40px;
-	height: 40px;
-	background-color: #fdfe00;
-	z-indes: 1000;
 `;
+
+export const TitleTheme = styled.h1`
+	display: inline-box;
+	position: relative;
+	top: 30vh;
+	left: 10vw;
+	a {
+		font-size: 10vw;
+		color: #fff;
+		text-decoration: none;
+		cursor: none;
+	}
+`;
+
+export default Sketch5Theme;
