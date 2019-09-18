@@ -16,8 +16,12 @@ class Cursor extends React.Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener('mousemove', this.handleMove);
-		window.addEventListener('touchmove', this.handleMove);
+		window.addEventListener('mousemove', this.handleMove, {
+			passive: false
+		});
+		window.addEventListener('touchmove', this.handleMove, {
+			passive: false
+		});
 	}
 
 	componentWillUnmount() {
@@ -26,6 +30,7 @@ class Cursor extends React.Component {
 	}
 
 	handleMove(e) {
+		e.preventDefault();
 		this.setState({
 			top: e.pageY,
 			left: e.pageX
