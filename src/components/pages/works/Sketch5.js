@@ -1,7 +1,7 @@
 import React from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import sketch5 from '../sketches/sketch5';
-import Sketch5Theme, { TitleTheme } from '../themes/sketch5Theme';
+import sketch5 from '../../sketches/works/5';
+import Sketch5Theme, { TitleTheme } from '../../themes/sketch5Theme';
 
 class Cursor extends React.Component {
 	constructor() {
