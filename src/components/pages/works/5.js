@@ -63,11 +63,11 @@ const Title = () => (
 	</TitleTheme>
 );
 
-const Sketch5 = () => (
+const Workh5 = () => (
 	<Sketch5Theme>
 		<Cursor />
 		<Title />
 	</Sketch5Theme>
 );
 
-export default Sketch5;
+export default Workh5;

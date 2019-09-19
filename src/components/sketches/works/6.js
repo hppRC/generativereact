@@ -5,9 +5,9 @@ const sketch6 = p => {
 
 	let joints = 10;
 	let linelength;
-	let resolution = 0.993;
-	let gravity = 9;
-	let damping = 0.99;
+	let resolution = 0.9993;
+	let gravity = 5;
+	let damping = 0.99994;
 
 	//let cnt = 0;
 
@@ -18,7 +18,7 @@ const sketch6 = p => {
 		p.angleMode(p.DEGREES);
 		p.noFill();
 		p.strokeWeight(1);
-		shape = new Shape(p.color(0, 0, 0, 1));
+		shape = new Shape(p.color(0, 0, 0, 10));
 		p.background(0);
 	};
 
@@ -27,6 +27,7 @@ const sketch6 = p => {
 		shape.addPos(p.mouseX, p.mouseY);
 		shape.draw();
 		shape.update();
+
 		//cnt = (cnt + 0.3) % 360;
 	};
 
@@ -50,7 +51,7 @@ const sketch6 = p => {
 		}
 
 		draw() {
-			p.strokeWeight(0.8);
+			p.strokeWeight(0.4);
 			//p.stroke(0, 10);
 
 			// p.beginShape();
@@ -60,17 +61,17 @@ const sketch6 = p => {
 			// p.endShape();
 
 			if (this.iterator < this.shapePath.length) {
-				var currentIndex = p.floor(this.iterator);
+				const currentIndex = p.floor(this.iterator);
 
-				var currentPos = this.shapePath[currentIndex];
-				var previousPos = this.shapePath[currentIndex - 1];
+				const currentPos = this.shapePath[currentIndex];
+				const previousPos = this.shapePath[currentIndex - 1];
 				if (previousPos) {
-					var offsetPos = p5.Vector.lerp(
+					const offsetPos = p5.Vector.lerp(
 						previousPos,
 						currentPos,
 						this.iterator - currentIndex
 					);
-					var heading =
+					const heading =
 						p.atan2(
 							currentPos.y - previousPos.y,
 							currentPos.x - previousPos.x
@@ -103,7 +104,7 @@ const sketch6 = p => {
 			this.size = size;
 			this.pendulumArm =
 				this.hierarchy > 0
-					? new Pendulum(this.size / 1.4, this.hierarchy)
+					? new Pendulum(this.size / 2, this.hierarchy)
 					: null;
 			this.angle = p.random(p.TAU);
 			this.origin = p.createVector(0, 0);
@@ -150,10 +151,11 @@ const sketch6 = p => {
 		draw() {
 			//p.rotate(cnt);
 			//p.stroke(0, 40);
-			p.beginShape();
+			//p.beginShape();
 			//p.vertex(this.origin.x, this.origin.y);
 			//p.vertex(this.end.x, this.end.y);
 			p.noFill();
+			//p.fill(255, 10);
 			p.stroke(255, 90);
 			// p.rect(
 			// 	this.origin.x,
@@ -162,11 +164,10 @@ const sketch6 = p => {
 			// 	this.end.y + this.origin.x
 			// );
 			p.ellipse(this.origin.x, this.origin.y, this.end.x + this.end.y);
-			p.endShape();
+			//p.rect(this.origin.x, this.origin.y, this.end.x, this.end.y);
+			//p.endShape();
 
-			//p.fill(0, 10);
 			//p.ellipse(this.end.x, this.end.y, 1, 1);
-			p.noFill();
 
 			if (this.pendulumArm) {
 				p.push();
