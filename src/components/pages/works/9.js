@@ -1,17 +1,8 @@
 /** @jsx jsx */
 import * as THREE from 'three';
-import React, {
-	useState,
-	useRef,
-	useMemo,
-	useContext,
-	useEffect,
-	useCallback
-} from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { useSpring, a } from 'react-spring/three';
-import { Canvas, useRender, useThree, useFrame } from 'react-three-fiber';
-import * as CANNON from 'cannon';
-import { useCannon } from '../../utils/useCannon';
+import { Canvas, useFrame } from 'react-three-fiber';
 import { css, jsx } from '@emotion/core';
 
 const theme = css`
