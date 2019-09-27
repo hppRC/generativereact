@@ -77,7 +77,7 @@ const Thing = () => {
 		uniforms.uMouse.value.lerp(
 			new THREE.Vector2(
 				e.pageX / window.innerWidth,
-				e.pageY / window.innerHeight
+				1.0 - e.pageY / window.innerHeight
 			),
 			0.2
 		);
