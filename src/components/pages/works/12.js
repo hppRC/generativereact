@@ -29,11 +29,11 @@ uniform vec2  uMouse;// マウス座標
 void main() {
 	vec2 uv = vec2( vUv.x * uAspect, vUv.y );
 	vec2 center = vec2( uMouse.x * uAspect, uMouse.y );// アスペクト補正したマウス座標
-	float radius = 0.05 + sin( uTime ) * 0.025;
+	float radius = 0.2 + sin( uTime ) * 0.025 ;
 	float lightness = radius / length ( uv - vec2(0.5*uAspect, 0.5) - center * 0.5 );
-	// lightness = clamp( lightness, 0.0, 1.0 );
+	//lightness = clamp( lightness, 0.0, 1.0 );
 	vec4 color = vec4( vec3( lightness ), 1.0 );
-	color *= vec4( 0.2, 1.0, 0.5, 1.0 );
+	color *= vec4( uv, 0.5, 1.0 );
 
 	gl_FragColor = color;
 }
@@ -59,21 +59,19 @@ const Thing = () => {
 			value: mouse
 		}
 	};
-	/*
+
 	useEffect(() => {
 		window.addEventListener('touchmove', handleMove, {
 			passive: false
 		});
-		window.addEventListener('touchend', handleEnd, {
-			passive: false
-		});
+
 		return () => {
 			window.removeEventListener('touchmove', handleMove);
-			window.removeEventListener('touchend', handleEnd);
 		};
 	}, []);
 
 	const handleMove = e => {
+		e.preventDefault();
 		const newPos = new THREE.Vector2(
 			-1 + (2 * e.pageX) / window.outerWidth,
 			1 - (2 * e.pageY) / window.outerHeight
@@ -81,14 +79,6 @@ const Thing = () => {
 		uniforms.uMouse.value.lerp(newPos, 0.2);
 	};
 
-	const handleEnd = e => {
-		const newPos = new THREE.Vector2(
-			-1 + (2 * e.pageX) / window.outerWidth,
-			1 - (2 * e.pageY) / window.outerHeight
-		);
-		uniforms.uMouse.value.lerp(newPos, 0.2);
-	};
-*/
 	useFrame(() => {
 		uniforms.uTime.value = clock.getElapsedTime();
 		uniforms.uMouse.value.lerp(mouse, 0.2);
