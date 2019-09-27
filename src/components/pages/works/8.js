@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { useMemo, useRef, useCallback } from 'react';
-import { Canvas, extend, useRender, useThree } from 'react-three-fiber';
+import { useMemo, useRef } from 'react';
+import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { css, jsx } from '@emotion/core';
 
@@ -17,34 +17,20 @@ const Particles = ({ pointCount }) => {
 		let positions = [],
 			colors = [];
 		for (let i = 0; i < pointCount; i++) {
-			positions.push(20 - Math.random() * 40);
-			positions.push(20 - Math.random() * 40);
-			positions.push(20 - Math.random() * 40);
-			colors.push(1);
-			colors.push(0.5);
-			colors.push(0.5);
+			positions.push(200 - Math.random() * 400);
+			positions.push(200 - Math.random() * 400);
+			positions.push(200 - Math.random() * 400);
+			colors.push(Math.random(1));
+			colors.push(Math.random(1));
+			colors.push(Math.random(1));
 		}
 		return [new Float32Array(positions), new Float32Array(colors)];
 	}, [pointCount]);
 
 	const attrib = useRef();
-	const hover = useCallback(e => {
-		e.stopPropagation();
-		attrib.current.array[e.index * 3] *= 0.9;
-		attrib.current.array[e.index * 3 + 1] *= 0.9;
-		attrib.current.array[e.index * 3 + 2] *= 0.9;
-		attrib.current.needsUpdate = true;
-	}, []);
-
-	const unhover = useCallback(e => {
-		attrib.current.array[e.index * 3] *= 0.9;
-		attrib.current.array[e.index * 3 + 1] *= 0.5;
-		attrib.current.array[e.index * 3 + 2] *= 0.5;
-		attrib.current.needsUpdate = true;
-	}, []);
 
 	return (
-		<points onPointerOver={hover} onPointerOut={unhover}>
+		<mesh>
 			<bufferGeometry attach='geometry'>
 				<bufferAttribute
 					attachObject={['attributes', 'position']}
@@ -60,20 +46,20 @@ const Particles = ({ pointCount }) => {
 					itemSize={3}
 				/>
 			</bufferGeometry>
-			<pointsMaterial
+			<meshBasicMaterial
 				attach='material'
 				vertexColors
 				size={10}
 				sizeAttenuation={false}
 			/>
-		</points>
+		</mesh>
 	);
 };
 
 const Controls = () => {
 	const controls = useRef();
 	const { camera, gl } = useThree();
-	useRender(() => controls.current.update());
+	useFrame(() => controls.current.update());
 	return (
 		<orbitControls
 			ref={controls}
@@ -86,12 +72,9 @@ const Controls = () => {
 };
 const Work8 = () => (
 	<div css={theme}>
-		<Canvas
-			orthographic
-			camera={{ zoom: 60 }}
-			raycaster={{ params: { Points: { threshold: 0.2 } } }}
-		>
+		<Canvas orthographic camera={{ zoom: 10 }}>
 			<Particles pointCount={10000} />
+			<fog color='#272727' near={0} far={100} />
 			<Controls />
 		</Canvas>
 	</div>

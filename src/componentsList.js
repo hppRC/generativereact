@@ -8,6 +8,7 @@ import Sketch6 from './components/pages/works/6';
 import Work7 from './components/pages/works/7';
 import Work8 from './components/pages/works/8';
 import Work9 from './components/pages/works/9';
+import Work10 from './components/pages/works/10';
 
 const componentsList = {
 	'1': <Sketch1 />,
@@ -18,7 +19,8 @@ const componentsList = {
 	'6': <Sketch6 />,
 	'7': <Work7 />,
 	'8': <Work8 />,
-	'9': <Work9 />
+	'9': <Work9 />,
+	'10': <Work10 />
 };
 
 export default componentsList;

@@ -11,13 +11,13 @@ const theme = css`
 	background-color: #000;
 `;
 
-const Plane = ({ position, quaternion }) => {
+const Plane = ({ position, quaternion = [0, 0, 0], rotateRadian = 0 }) => {
 	const ref = useCannon({ mass: 0 }, body => {
 		body.addShape(new CANNON.Plane());
-		// body.quaternion.setFromAxisAngle(
-		// 	new CANNON.Vec3(...quaternion),
-		// 	-Math.PI / 2
-		// );
+		body.quaternion.setFromAxisAngle(
+			new CANNON.Vec3(...quaternion),
+			rotateRadian
+		);
 		body.position.set(...position);
 	});
 
@@ -29,15 +29,15 @@ const Plane = ({ position, quaternion }) => {
 	);
 };
 
-const Box = ({ position, args, key }) => {
-	const ref = useCannon({ mass: 0.01 }, body => {
+const Box = ({ position, args, key = 0, mass = 1, color = '#272727' }) => {
+	const ref = useCannon({ mass: mass }, body => {
 		body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)));
 		body.position.set(...position);
 	});
 	return (
 		<mesh ref={ref} castShadow receiveShadow key={key}>
 			<boxGeometry attach='geometry' args={args} />
-			<meshNormalMaterial attach='material' color='#272727' />
+			<meshNormalMaterial attach='material' color={color} />
 		</mesh>
 	);
 };
