@@ -74,7 +74,13 @@ const Thing = () => {
 
 	const handleMove = e => {
 		e.preventDefault();
-		uniforms.uMouse.value.lerp(new THREE.Vector2(e.pageX, e.pageY), 0.2);
+		uniforms.uMouse.value.lerp(
+			new THREE.Vector2(
+				e.pageX / window.innerWidth,
+				e.pageY / window.innerHeight
+			),
+			0.2
+		);
 	};
 
 	return (
