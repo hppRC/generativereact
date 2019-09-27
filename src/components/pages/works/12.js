@@ -56,32 +56,43 @@ const Thing = () => {
 			value: 0.0
 		},
 		uMouse: {
-			value: new THREE.Vector2(0.5, 0.5)
+			value: mouse
 		}
 	};
-
-	useFrame(() => {
-		uniforms.uTime.value = clock.getElapsedTime();
-		uniforms.uMouse.value.lerp(mouse, 0.2);
-	});
-
+	/*
 	useEffect(() => {
 		window.addEventListener('touchmove', handleMove, {
 			passive: false
 		});
-		return () => window.removeEventListener('touchmove', handleMove);
+		window.addEventListener('touchend', handleEnd, {
+			passive: false
+		});
+		return () => {
+			window.removeEventListener('touchmove', handleMove);
+			window.removeEventListener('touchend', handleEnd);
+		};
 	}, []);
 
 	const handleMove = e => {
-		e.preventDefault();
-		uniforms.uMouse.value.lerp(
-			new THREE.Vector2(
-				e.pageX / window.innerWidth,
-				1.0 - e.pageY / window.innerHeight
-			),
-			0.2
+		const newPos = new THREE.Vector2(
+			-1 + (2 * e.pageX) / window.outerWidth,
+			1 - (2 * e.pageY) / window.outerHeight
 		);
+		uniforms.uMouse.value.lerp(newPos, 0.2);
 	};
+
+	const handleEnd = e => {
+		const newPos = new THREE.Vector2(
+			-1 + (2 * e.pageX) / window.outerWidth,
+			1 - (2 * e.pageY) / window.outerHeight
+		);
+		uniforms.uMouse.value.lerp(newPos, 0.2);
+	};
+*/
+	useFrame(() => {
+		uniforms.uTime.value = clock.getElapsedTime();
+		uniforms.uMouse.value.lerp(mouse, 0.2);
+	});
 
 	return (
 		<mesh>
