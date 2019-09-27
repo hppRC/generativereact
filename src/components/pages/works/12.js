@@ -65,6 +65,18 @@ const Thing = () => {
 		uniforms.uMouse.value.lerp(mouse, 0.2);
 	});
 
+	useEffect(() => {
+		window.addEventListener('touchmove', handleMove, {
+			passive: false
+		});
+		return () => window.removeEventListener('touchmove', handleMove);
+	}, []);
+
+	const handleMove = e => {
+		e.preventDefault();
+		uniforms.uMouse.value.lerp(new THREE.Vector2(e.pageX, e.pageY), 0.2);
+	};
+
 	return (
 		<mesh>
 			<planeGeometry attach='geometry' args={[2, 2]} />
