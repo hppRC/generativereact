@@ -11,7 +11,7 @@ export function Provider({ children, gravity }) {
 		world.broadphase = new CANNON.NaiveBroadphase();
 		world.solver.iterations = 10;
 		world.gravity.set(...gravity);
-	}, [world]);
+	}, [world, gravity]);
 
 	// Run world stepper every frame
 	useRender(() => world.step(1 / 60));
@@ -33,7 +33,7 @@ export function useCannon({ ...props }, fn, deps = []) {
 		world.addBody(body);
 		// Remove body on unmount
 		return () => world.removeBody(body);
-	}, deps);
+	}, [world, body, fn, deps]);
 
 	useRender(() => {
 		if (ref.current) {

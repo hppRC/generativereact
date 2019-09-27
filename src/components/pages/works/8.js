@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useMemo, useRef, useCallback } from 'react';
+import { useMemo, useRef, useCallback } from 'react';
 import { Canvas, extend, useRender, useThree } from 'react-three-fiber';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { css, jsx } from '@emotion/core';
