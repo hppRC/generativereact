@@ -24,11 +24,11 @@ varying vec2 vUv;
 
 uniform float uAspect;
 uniform float uTime;
-uniform vec2  uMouse;// マウス座標
+uniform vec2  uMouse;
 
 void main() {
 	vec2 uv = vec2( vUv.x * uAspect, vUv.y );
-	vec2 center = vec2( uMouse.x * uAspect, uMouse.y );// アスペクト補正したマウス座標
+	vec2 center = vec2( uMouse.x * uAspect, uMouse.y );
 	float radius = 0.2 + sin( uTime ) * 0.025 ;
 	float lightness = radius / length ( uv - vec2(0.5*uAspect, 0.5) - center * 0.5 );
 	//lightness = clamp( lightness, 0.0, 1.0 );
