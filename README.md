@@ -1,7 +1,6 @@
 # GenerativeReact
 
-React上でp5.jsを用いてGenerative Artを行うという試み
-
+React上でp5.jsを用いてGenerative Artを行うという試み、及びThree.jsを介したWebGLによる表現
 
 ```
 .
