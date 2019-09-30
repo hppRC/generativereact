@@ -80,7 +80,9 @@ function Effects() {
 	const light = useRef();
 
 	useEffect(() => {
+		console.log(occlusionComposer.current);
 		occlusionComposer.current.setSize(size.width, size.height);
+		console.log(composer.current);
 		composer.current.setSize(size.width, size.height);
 	}, [size]);
 

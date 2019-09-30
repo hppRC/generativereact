@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import * as THREE from 'three';
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { apply, Canvas, useFrame } from 'react-three-fiber';
 import * as meshline from 'three.meshline';
 import Controls from '../../utils/orbitControls';

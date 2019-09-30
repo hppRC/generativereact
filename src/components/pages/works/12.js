@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useEffect, useRef, useMemo, useState } from 'react';
+import { useEffect } from 'react';
 import * as THREE from 'three';
 import { extend, Canvas, useFrame, useThree } from 'react-three-fiber';
 import { css, jsx } from '@emotion/core';
@@ -68,6 +68,8 @@ const Thing = () => {
 		return () => {
 			window.removeEventListener('touchmove', handleMove);
 		};
+		// ↓this line is necessary to avoid a warning about React Hooks dependency↓
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleMove = e => {
