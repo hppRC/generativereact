@@ -14,9 +14,16 @@ const WorksLink = props => (
 const Items = () => (
 	<ul>
 		{Object.keys(componentsList).map(id => (
-			<WorksLink to={id}>work {id}</WorksLink>
+			<WorksLink to={id} key={id}>
+				work {id}
+			</WorksLink>
 		))}
-		<WorksLink to={Object.keys(componentsList) + 1}>work 404</WorksLink>
+		<WorksLink
+			to={Object.keys(componentsList) + 1}
+			key={Object.keys(componentsList) + 1}
+		>
+			work 404
+		</WorksLink>
 	</ul>
 );
 

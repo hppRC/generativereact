@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import * as THREE from 'three';
 import { useState, useRef } from 'react';
-import { apply, Canvas, useFrame } from 'react-three-fiber';
+import { extend, Canvas, useFrame } from 'react-three-fiber';
 import * as meshline from 'three.meshline';
 import Controls from '../../utils/orbitControls';
 
@@ -13,7 +13,7 @@ const theme = css`
 	background-color: #000;
 `;
 
-apply(meshline);
+extend(meshline);
 
 const numLines = 300;
 const lines = new Array(numLines).fill();
