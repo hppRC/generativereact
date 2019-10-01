@@ -3,9 +3,10 @@ import { useThree, useFrame, extend } from 'react-three-fiber';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
+import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
 import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader';
 
-extend({ EffectComposer, RenderPass, ShaderPass });
+extend({ EffectComposer, RenderPass, ShaderPass, FilmPass });
 
 export const Effect = () => {
 	const { gl, scene, camera, size } = useThree();
@@ -22,7 +23,8 @@ export const Effect = () => {
 	return (
 		<effectComposer ref={composer} args={[gl]}>
 			<renderPass attachArray='passes' args={[scene, camera]} />
-			<glitchPass attachArray='passes' />
+			<glitchPass attachArray='passes' args={[100]} />
+
 			<shaderPass
 				attachArray='passes'
 				args={[FXAAShader]}

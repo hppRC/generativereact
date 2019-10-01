@@ -1,5 +1,5 @@
-import React, { useRef, useCallback, useMemo } from 'react';
-import { Canvas, useFrame, useResource, useThree } from 'react-three-fiber';
+import React, { useRef, useMemo } from 'react';
+import { Canvas, useFrame, useResource } from 'react-three-fiber';
 import { Effect } from './11/Effect';
 
 const theme = {
@@ -23,37 +23,30 @@ const Particle = ({ geometry, material }) => {
 		ref.current.scale.set(s, s, s);
 		ref.current.rotation.set(s * 5, s * 5, s * 5);
 		ref.current.position.set(
-			xFactor +
-				Math.cos((t / 30) * factor) +
-				(Math.sin(t * 1) * factor) / 10,
-			yFactor +
-				Math.sin((t / 20) * factor) +
-				(Math.cos(t * 2) * factor) / 10,
-			zFactor +
-				Math.cos((t / 10) * factor) +
-				(Math.sin(t * 3) * factor) / 20
+			xFactor + Math.cos((t / 30) * factor),
+			yFactor + Math.sin((t / 20) * factor),
+			zFactor + Math.sin(t * 2) * factor - 10
 		);
 	});
 	return <mesh ref={ref} material={material} geometry={geometry} />;
 };
 
-const Swarm = ({ mouseOld }) => {
+const Swarm = () => {
 	const light = useRef();
 	const [geometryRef, geometry] = useResource();
 	const [materialRef, material] = useResource();
 	useFrame(({ mouse }) => {
-		light.current.position.x = mouse.x;
-		light.current.position.y = mouse.y;
+		light.current.position.x = 50 * mouse.x;
+		light.current.position.y = 50 * mouse.y;
 	});
 	return (
 		<>
 			<pointLight
 				ref={light}
 				distance={50}
-				intensity={1.5}
-				color='white'
+				intensity={5.0}
+				color='#fff'
 			/>
-
 			<mesh>
 				<planeGeometry attach='geometry' args={[10000, 10000]} />
 				<meshPhongMaterial
@@ -62,10 +55,10 @@ const Swarm = ({ mouseOld }) => {
 					depthTest={false}
 				/>
 			</mesh>
-			<sphereBufferGeometry ref={geometryRef} args={[8, 30, 30]} />
-			<meshPhysicalMaterial ref={materialRef} />
+			<boxBufferGeometry ref={geometryRef} args={[1, 0]} />
+			<meshPhongMaterial ref={materialRef} />
 			{geometry &&
-				new Array(200)
+				new Array(1000)
 					.fill()
 					.map((_, index) => (
 						<Particle
@@ -79,19 +72,11 @@ const Swarm = ({ mouseOld }) => {
 };
 
 const Work11 = () => {
-	const mouse = useRef([0, 0]);
-	const onMouseMove = useCallback(
-		({ clientX: x, clientY: y }) =>
-			(mouse.current = [
-				x - window.innerWidth / 2,
-				y - window.innerHeight / 2
-			]),
-		[]
-	);
 	return (
-		<div onMouseMove={onMouseMove}>
+		<div>
 			<Canvas style={theme} camera={{ fov: 75, position: [0, 0, 50] }}>
-				<Swarm mouse={mouse} />
+				<Swarm />
+				<Effect />
 			</Canvas>
 		</div>
 	);
