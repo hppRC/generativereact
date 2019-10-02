@@ -1,15 +1,19 @@
+import * as THREE from 'three';
+
 export default {
 	uniforms: {
-		uTime: { value: 0 },
-		resolution: { value: [0, 0] }
+		uTime: { value: 0 }
 	},
 
 	vertexShader: `
     varying vec2 vUv;
+    uniform float uTime;
 
     void main() {
         vUv = uv;
-        gl_Position = vec4( position, 1. );
+        vec3 pos = position;
+
+        gl_Position = vec4(pos.x, pos.y, pos.z, 1);
 }
     `,
 
@@ -17,7 +21,7 @@ export default {
     varying vec2 vUv;
 
     void main() {
-        vec4 color = vec4( vUv.x, vUv.y, 0.0, 1.0 );// テクスチャ座標を r g に入れる
+        vec4 color = vec4( vUv.x, vUv.y, 0.0, 1.0 );
 
         gl_FragColor = color;
     }`

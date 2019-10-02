@@ -1,17 +1,7 @@
 /** @jsx jsx */
-
-import { useRef, useEffect, useState } from 'react';
-import { Canvas, useThree, useFrame, extend } from 'react-three-fiber';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
-import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader';
-import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
-import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass';
+import { useMemo } from 'react';
+import { Canvas } from 'react-three-fiber';
 import { css, jsx } from '@emotion/core';
-import shader from './9/shader';
-
-extend({ EffectComposer, RenderPass, ShaderPass, GlitchPass, BloomPass });
 
 const theme = css`
 	width: 100vw;
@@ -19,45 +9,53 @@ const theme = css`
 	background-color: #000;
 `;
 
-const Effect = () => {
-	const { gl, scene, camera, size } = useThree();
-	const composer = useRef();
-	const [uTime, setTime] = useState(0);
-
-	useEffect(() => {
-		composer.current.setSize(size.width, size.height);
-	}, [size]);
-
-	useFrame(({ clock }) => {
-		setTime(clock.getElapsedTime());
-		composer.current.render();
-	}, 1);
+const Thing = () => {
+	let positions = useMemo(() => [], []);
+	let colors = useMemo(() => [], []);
+	let x, y, z;
+	for (let i = 0; i < 1000; i++) {
+		x = Math.random() * 2.0 - 1.0;
+		y = Math.random() * 2.0 - 1.0;
+		z = Math.random() * 2.0 - 1.0;
+		if (x * x + y * y + z * z <= 1) {
+			positions.push(x * 500.0);
+			positions.push(y * 10.0);
+			positions.push(z * 500.0);
+			colors.push(Math.random() * 255.0);
+			colors.push(Math.random() * 255.0);
+			colors.push(Math.random() * 255.0);
+			colors.push(Math.random() * 255.0);
+		}
+	}
 
 	return (
-		<effectComposer ref={composer} args={[gl]}>
-			<renderPass attachArray='passes' args={[scene, camera]} />
-			<shaderPass
-				attachArray='passes'
-				args={[shader]}
-				uniforms-uTime-value={uTime}
-				uniforms-resolution-value={[1 / size.width, 1 / size.height]}
-				renderToScreen
-			/>
-			<glitchPass attachArray='passes' />
-		</effectComposer>
+		<mesh castShadow receiveShadow>
+			<bufferGeometry attach='geometry'>
+				<bufferAttribute
+					attachObject={['attributes', 'position']}
+					count={positions.length / 3}
+					array={positions}
+					itemSize={3}
+				/>
+				<bufferAttribute
+					attachObject={['attributes', 'color']}
+					count={colors.length / 4}
+					array={colors}
+					itemSize={4}
+					normalized
+				/>
+			</bufferGeometry>
+			<meshStandardMaterial attach='material' args={[1, 1, 1]} />
+		</mesh>
 	);
 };
 
 const Work9 = () => (
 	<div css={theme}>
-		<Canvas camera={{ position: [0, 1, 3] }} shadowMap>
+		<Canvas camera={{ position: [0, 0, 500] }} shadowMap>
 			<ambientLight />
 			<spotLight castShadow position={[1, 0, 2]} />
-			<mesh castShadow receiveShadow>
-				<boxGeometry attach='geometry' args={[1, 1, 1]} />
-				<meshStandardMaterial attach='material' />
-			</mesh>
-			<Effect />
+			<Thing />
 		</Canvas>
 	</div>
 );
