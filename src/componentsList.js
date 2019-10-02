@@ -11,6 +11,7 @@ import Work9 from './components/pages/works/9';
 import Work10 from './components/pages/works/10';
 import Work11 from './components/pages/works/11';
 import Work12 from './components/pages/works/12';
+import Work13 from './components/pages/works/13';
 
 const componentsList = {
 	'1': <Sketch1 />,
@@ -24,7 +25,8 @@ const componentsList = {
 	'9': <Work9 />,
 	'10': <Work10 />,
 	'11': <Work11 />,
-	'12': <Work12 />
+	'12': <Work12 />,
+	'13': <Work13 />
 };
 
 export default componentsList;

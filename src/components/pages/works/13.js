@@ -1,16 +1,16 @@
 import * as THREE from 'three';
-import ReactDOM from 'react-dom';
 import React, { Suspense, useRef, useMemo } from 'react';
 import { Canvas, useFrame, useLoader } from 'react-three-fiber';
 
-const css = {
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "#272727",
+const theme = {
+	width: '100vw',
+	height: '100vh',
+	backgroundColor: '#272727'
 }
 
 const dummy = new THREE.Object3D();
-function Suzanne() {
+
+const Suzanne =() =>{
 	// Load async model
 	const [geometry] = useLoader(THREE.BufferGeometryLoader, './13/suzanne.json');
 	// When we're here it's loaded, now compute vertex normals
@@ -46,11 +46,12 @@ function Suzanne() {
 	);
 }
 
-ReactDOM.render(
-	<Canvas style={css} camera={{ position: [0, 0, 15] }}>
+const Work13 = () => (
+	<Canvas style={theme} camera={{ position: [0, 0, 15] }}>
 		<Suspense fallback={null}>
 			<Suzanne />
 		</Suspense>
-	</Canvas>,
-	document.getElementById('root')
+	</Canvas>
 );
+
+export default Work13
