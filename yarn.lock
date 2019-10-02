@@ -8401,10 +8401,10 @@ react-spring@^8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
-react-three-fiber@^3.0.0-beta.13:
-  version "3.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-3.0.0-beta.15.tgz#bd7d5b3a212649d28389da60fa5a9701aad339f2"
-  integrity sha512-XzV2DDzwP3FVFQsOJrdRCQahPI+gKsOXAX74OF4RMNs5eywLjhHsjVzugQZ4+iBwfzZNDtbUicskvf1QiIZD3Q==
+react-three-fiber@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-3.0.0.tgz#d287f7aca35d01276b0e74c3eabde4a85d7b861f"
+  integrity sha512-ZRD1UPXwnKHHQpyvf2BYC/RM6sfGIVz0gmBwZLVi2Dk4LqnPCvgYYblfMTba4uIfMncsMaEOtP4rgt9x5OGVZQ==
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@types/three" "^0.103.2"

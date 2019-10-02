@@ -4,9 +4,10 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
 import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader';
 
-extend({ EffectComposer, RenderPass, ShaderPass, FilmPass });
+extend({ EffectComposer, RenderPass, ShaderPass, FilmPass, GlitchPass });
 
 export const Effect = () => {
 	const { gl, scene, camera, size } = useThree();
