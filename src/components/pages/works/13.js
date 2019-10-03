@@ -12,7 +12,7 @@ const dummy = new THREE.Object3D();
 
 const Suzanne = () => {
 	// Load async model
-	const [geometry] = useLoader(THREE.BufferGeometryLoader, '/suzanne.json');
+	const [geometry] = useLoader(THREE.BufferGeometryLoader, './suzanne.json');
 	// When we're here it's loaded, now compute vertex normals
 	useMemo(() => {
 		geometry.computeVertexNormals();
