@@ -71,7 +71,7 @@ const Thing = () => {
 		let positions = [];
 		let colors = [];
 		let x, y, z;
-		for (let i = 0; i < 500000; i++) {
+		for (let i = 0; i < 100000; i++) {
 			x = Math.random() * 2.0 - 1.0;
 			y = Math.random() * 2.0 - 1.0;
 			z = Math.random() * 2.0 - 1.0;
@@ -139,7 +139,12 @@ const Controls = ({ dampingFactor = 0.5, rotateSpeed = 0.5 }) => {
 };
 const Work9 = () => (
 	<div css={theme}>
-		<Canvas camera={{ position: [0, 0, 1.5] }} shadowMap>
+		<Canvas
+			camera={{
+				position: [0, 0, 1 + window.innerHeight / window.innerWidth]
+			}}
+			shadowMap
+		>
 			<Thing />
 			<Controls />
 		</Canvas>
