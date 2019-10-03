@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { useMemo, useState } from 'react';
+import * as THREE from 'three';
+import { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
 import { css, jsx } from '@emotion/core';
 
@@ -10,87 +11,104 @@ const theme = css`
 `;
 
 const vertexSource = `
-varying vec2 vUv;
+precision mediump float;
+uniform float time;
+uniform float randx;
+uniform float randy;
+uniform float randz;
+attribute vec4 color;
+varying vec4 vColor;
+varying vec3 pos;
 
 void main() {
-  vUv = uv;// uv: ShaderMaterialで補完される vec2 型(xy)の変数。テクスチャ座標のこと。
-
-  gl_Position = vec4( position, 1.0 );
+	vColor = color;
+	pos = vec3(
+		3. * position.x * ( 1. / time + cos(randx + position.x) * position.x * sin(1. + position.z * time) * cos(1.2 * position.x * sin(cos(position.z + 0.01 * sin(0.5 * time + randx))) + sin(cos(0.5 * time) * position.y))),
+		3. * position.y * (1. / time + sin(randy + position.z + 0.5 * time - randy) * position.y * cos(0.001*0.5 * time + position.z + sin(cos(sin(1. - sin(0.5 * time) * cos(0.5 * time)) + sin(0.5 * time)) + sin(cos(0.5 * time)) + 0.5 * time * sin(position.y))) * cos(position.x * cos(sin(0.5 * time)))),
+		3. * position.z * (1. / abs(0.5 * time - 100.) + cos(randz + 0.0025*0.5 * time) * position.z + sin(sin(position.y * sin(cos(0.5 * time) + 0.5 * time * sin(position.y)) * cos(position.x * cos(sin(0.5 * time))))))
+		);
+	gl_PointSize = 1.5;
+	gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }
 `;
 
+//gl_Position = vec4(tmp.x * sin(tmp.y + tmp.z * time / randx + tmp.y) * atan(time), sin(tmp.y * cos(tmp.z) - 0.001 * time * acos(tmp.x)), tmp.z * sin(atan(tmp.x * time / randx + tmp.y)), 1.0);
+
 const fragmentSource = `
-varying vec2 vUv;
-
-uniform float uAspect;
-uniform float uTime;
-uniform vec2  uMouse;
-
+precision mediump float;
+uniform float time;
+varying vec4 vColor;
+varying vec3 pos;
 void main() {
-	vec2 uv = vec2( vUv.x * uAspect, vUv.y );
-	vec2 center = vec2( uMouse.x * uAspect, uMouse.y );
-	float radius = 0.1 + sin( uTime ) * 0.05 ;
-	float lightness = radius / length ( uv - vec2(0.5 * uAspect, 0.5) - center * 0.5 );
-	//lightness = clamp( lightness, 0.0, 1.0 );
-	vec4 color = vec4( vec3( lightness ), 1.0 );
-	color *= vec4( uv, 0.9, 1.0 );
-
-	gl_FragColor = color;
+	gl_FragColor = vec4(
+		vColor.r * abs(sin(time + pos.z) + cos(pos.x)),
+		vColor.g * abs(cos(time - vColor.b) + sin(pos.z)),
+		vColor.b * abs(sin(time - pos.x) / abs(sin(time - vColor.b))),
+		1.0
+		);
 }
 `;
 
 const Thing = () => {
-	const { mouse, size } = useThree();
+	const ref = useRef();
 
 	const uniforms = {
-		uAspect: {
-			value: size.width / size.height
-		},
-		uTime: {
+		time: {
 			value: 0.0
 		},
-		uMouse: {
-			value: mouse
+		randx: {
+			value: 1 + Math.random()
+		},
+		randy: {
+			value: 1 + Math.random()
+		},
+		randz: {
+			value: 1 + Math.random()
 		}
 	};
 
-	const [positions] = useState([]);
-	const [colors] = useState([]);
-	let x, y, z;
-	for (let i = 0; i < 1000; i++) {
-		x = Math.random() * 2.0 - 1.0;
-		y = Math.random() * 2.0 - 1.0;
-		z = Math.random() * 2.0 - 1.0;
-		if (x * x + y * y + z * z <= 1) {
-			positions.push(x * 500.0);
-			positions.push(y * 10.0);
-			positions.push(z * 500.0);
+	const [positions, colors] = useMemo(() => {
+		let positions = [];
+		let colors = [];
+		let x, y, z;
+		for (let i = 0; i < 500000; i++) {
+			x = Math.random() * 2.0 - 1.0;
+			y = Math.random() * 2.0 - 1.0;
+			z = Math.random() * 2.0 - 1.0;
+
+			positions.push(x);
+			positions.push(y);
+			positions.push(z);
 			colors.push(Math.random() * 255.0);
 			colors.push(Math.random() * 255.0);
 			colors.push(Math.random() * 255.0);
 			colors.push(Math.random() * 255.0);
 		}
-	}
+		return [positions, colors];
+	}, []);
 
-	useFrame(({ clock, size }) => {
-		uniforms.uTime.value = clock.getElapsedTime();
-		uniforms.uAspect.value = size.width / size.height;
+	useFrame(({ clock }) => {
+		const time = clock.getElapsedTime();
+		uniforms.time.value = time;
+		ref.current.rotation.x += (Math.PI / 720) * Math.sin(0.01 * time);
+		ref.current.rotation.y += Math.PI / 1440;
 	});
 
 	return (
-		<mesh castShadow receiveShadow>
-			<bufferGeometry>
+		<points ref={ref}>
+			<bufferGeometry attach='geometry'>
 				<bufferAttribute
 					attachObject={['attributes', 'position']}
 					count={positions.length / 3}
-					array={positions}
+					array={new Float32Array(positions)}
 					itemSize={3}
 				/>
 				<bufferAttribute
 					attachObject={['attributes', 'color']}
 					count={colors.length / 4}
-					array={colors}
+					array={new Uint8Array(colors)}
 					itemSize={4}
+					normalized
 				/>
 			</bufferGeometry>
 			<shaderMaterial
@@ -98,34 +116,32 @@ const Thing = () => {
 				vertexShader={vertexSource}
 				fragmentShader={fragmentSource}
 				uniforms={uniforms}
+				side={THREE.DoubleSide}
+				transparent
 			/>
-		</mesh>
+		</points>
 	);
 };
 
-/*
-			<bufferGeometry attach='geometry'>
-				<bufferAttribute
-					attachObject={['attributes', 'position']}
-					count={positions.length / 3}
-					array={positions}
-					itemSize={3}
-				/>
-				<bufferAttribute
-					attachObject={['attributes', 'color']}
-					count={colors.length / 4}
-					array={colors}
-					itemSize={4}
-				/>
-			</bufferGeometry>
-*/
-
+const Controls = ({ dampingFactor = 0.5, rotateSpeed = 0.5 }) => {
+	const controls = useRef();
+	const { camera, gl } = useThree();
+	useFrame(() => controls.current.update());
+	return (
+		<orbitControls
+			ref={controls}
+			args={[camera, gl.domElement]}
+			enableDamping
+			dampingFactor={dampingFactor}
+			rotateSpeed={rotateSpeed}
+		/>
+	);
+};
 const Work9 = () => (
 	<div css={theme}>
-		<Canvas camera={{ position: [0, 0, 500] }} shadowMap>
-			<ambientLight />
-			<spotLight castShadow position={[1, 0, 2]} />
+		<Canvas camera={{ position: [0, 0, 1.5] }} shadowMap>
 			<Thing />
+			<Controls />
 		</Canvas>
 	</div>
 );
