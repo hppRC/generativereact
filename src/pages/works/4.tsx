@@ -3,7 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { SEO, StyledP5Canvas as P5Canvas } from '../../components';
-import sketch from '../../sketches/works/2';
+import sketch from '../../sketches/works/4';
 import baseStyle from '../../styles/base-style';
 
 const Work: React.FCX = ({ className }) => (
@@ -24,7 +24,7 @@ const StyledWork = styled(Work)`
 
 export default () => (
   <>
-    <SEO title='Work2' pathname='/works/2' />
+    <SEO title='Work4' pathname='/works/4' />
     <StyledWork />
   </>
 );

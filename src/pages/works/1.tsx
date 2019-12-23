@@ -6,13 +6,13 @@ import { SEO, StyledP5Canvas as P5Canvas } from '../../components';
 import sketch from '../../sketches/works/1';
 import baseStyle from '../../styles/base-style';
 
-const Index: React.FCX = ({ className }) => (
+const Work: React.FCX = ({ className }) => (
   <main className={className}>
     <P5Canvas sketch={sketch} />
   </main>
 );
 
-const StyledIndex = styled(Index)`
+const StyledWork = styled(Work)`
   ${baseStyle};
   canvas {
     position: absolute;
@@ -25,6 +25,6 @@ const StyledIndex = styled(Index)`
 export default () => (
   <>
     <SEO title='Work1' pathname='/works/1' />
-    <StyledIndex />
+    <StyledWork />
   </>
 );
