@@ -4,7 +4,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { SEO, StyledP5Canvas as P5Canvas } from '../../components';
-import sketch from '../../sketches/works/1';
+import sketch from '../../sketches/works/2';
 import baseStyle from '../../styles/base-style';
 
 const Index: React.FCX = ({ className }) => (
@@ -25,7 +25,7 @@ const StyledIndex = styled(Index)`
 
 export default () => (
   <>
-    <SEO title='Work1' pathname='/works/1' />
+    <SEO title='Work2' pathname='/works/2' />
     <StyledIndex />
   </>
 );
