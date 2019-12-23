@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 
 import styled from '@emotion/styled';
@@ -8,7 +9,12 @@ import baseStyle from '../styles/base-style';
 const Index: React.FCX = ({ className }) => {
   return (
     <main className={className}>
-      <h1>this is index page!</h1>
+      <Link to='/works'>
+        <div>
+          <h1>Genarative{'\n'}React</h1>
+          <p>click here</p>
+        </div>
+      </Link>
     </main>
   );
 };
