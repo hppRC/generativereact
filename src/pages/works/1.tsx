@@ -1,10 +1,9 @@
 import React from 'react';
+import { SEO, StyledP5Canvas as P5Canvas } from 'src/components';
+import sketch from 'src/sketches/works/1';
+import baseStyle from 'src/styles/base-style';
 
 import styled from '@emotion/styled';
-
-import { SEO, StyledP5Canvas as P5Canvas } from '../../components';
-import sketch from '../../sketches/works/1';
-import baseStyle from '../../styles/base-style';
 
 const Work: React.FCX = ({ className }) => (
   <main className={className}>

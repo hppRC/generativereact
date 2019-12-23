@@ -1,11 +1,10 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import { SEO, StyledP5Canvas as P5Canvas } from 'src/components';
+import sketch from 'src/sketches/index';
+import baseStyle from 'src/styles/base-style';
 
 import styled from '@emotion/styled';
-
-import { SEO, StyledP5Canvas as P5Canvas } from '../components';
-import sketch from '../sketches/index';
-import baseStyle from '../styles/base-style';
 
 const Index: React.FCX = ({ className }) => (
   <>
