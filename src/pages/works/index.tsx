@@ -13,7 +13,7 @@ const Works: React.FCX = ({ className }) => {
     <main className={className}>
       <ul>
         {info.map((title, i) => (
-          <li>
+          <li key={i}>
             <Link to={`/works/${i + 1}`}>{title}</Link>
           </li>
         ))}
