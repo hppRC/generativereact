@@ -6,17 +6,22 @@ import loadable from '@loadable/component';
 const _p5 = loadable.lib(() => import('p5/lib/p5.min'));
 
 type Props = {
-  sketch: any;
+  sketch: (p: any) => void;
 };
 
-const P5Canvas: React.FCX<Props> = ({ className, sketch }) => {
+const P5Canvas: React.FCX<Props> = ({ className, sketch, ...props }) => {
   const [, setP5] = useState();
   const wrapper = React.createRef<any>();
+  let canvas;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       _p5.load().then((p5: any) => {
-        setP5(new p5.default(sketch, wrapper.current));
+        canvas = new p5.default(sketch, wrapper.current);
+        setP5(canvas);
+        if (canvas.myCustomRedrawAccordingToNewPropsHandler) {
+          canvas.myCustomRedrawAccordingToNewPropsHandler(props);
+        }
       });
     }
   }, [sketch]);
