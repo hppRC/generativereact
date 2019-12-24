@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
 
+const _p5 = loadable.lib(() => import('p5/lib/p5.min'));
+
 type Props = {
   sketch: (p: any) => void;
 };
@@ -14,7 +16,6 @@ const P5Canvas: React.FCX<Props> = ({ className, sketch, ...props }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const _p5 = loadable.lib(() => import('p5/lib/p5.min'));
       _p5.load().then((p5: any) => {
         canvas = new p5.default(sketch, wrapper.current);
         setP5(canvas);
