@@ -16,13 +16,14 @@ const P5Canvas: React.FCX<Props> = ({ className, sketch, ...props }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      _p5.load().then((p5: any) => {
+      (async () => {
+        const p5 = await _p5.load();
         canvas = new p5.default(sketch, wrapper.current);
         setP5(canvas);
         if (canvas.myCustomRedrawAccordingToNewPropsHandler) {
           canvas.myCustomRedrawAccordingToNewPropsHandler(props);
         }
-      });
+      })();
     }
   }, [sketch]);
 
