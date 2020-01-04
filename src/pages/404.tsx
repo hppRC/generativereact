@@ -1,6 +1,7 @@
 import React from 'react';
 import { SEO } from 'src/components';
-import baseStyle from 'src/styles/base-style';
+import { Layout } from 'src/layouts';
+import { baseStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
@@ -15,8 +16,8 @@ const StyledNotFound = styled(NotFound)`
 `;
 
 export default () => (
-  <>
+  <Layout>
     <SEO title='404 NotFound' />
     <StyledNotFound />
-  </>
+  </Layout>
 );

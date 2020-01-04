@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { P5Canvas, SEO } from 'src/components';
+import { Layout } from 'src/layouts';
 import sketch from 'src/sketches/index';
 import { baseStyle, standardCanvasStyle } from 'src/styles';
 
@@ -38,8 +39,8 @@ const StyledIndex = styled(Index)`
 `;
 
 export default () => (
-  <>
+  <Layout>
     <SEO title='Top' pathname='/' />
     <StyledIndex />
-  </>
+  </Layout>
 );

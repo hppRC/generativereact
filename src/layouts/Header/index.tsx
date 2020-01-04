@@ -4,7 +4,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Header: React.FCX = ({ className }) => (
-  <header className={className}>
+  <header className={className} id='___header'>
     <Link to='/'>
       <h1>Generative React</h1>
     </Link>

@@ -15,7 +15,7 @@ const Works: React.FCX = ({ className }) => {
       <ul>
         {info.map((title, i) => (
           <li key={i}>
-            <iframe src={`/only-works/${i + 1}`} />
+            <iframe src={`/works/${i + 1}`} />
             <div
               onClick={() => {
                 console.log('test');

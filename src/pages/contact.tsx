@@ -1,5 +1,6 @@
 import React from 'react';
 import { SEO, StyledForm as Form } from 'src/components';
+import { Layout } from 'src/layouts';
 import baseStyle from 'src/styles/base-style';
 
 import styled from '@emotion/styled';
@@ -16,8 +17,8 @@ const StyledContact = styled(Contact)`
 `;
 
 export default () => (
-  <>
+  <Layout>
     <SEO title='Contact' pathname='/contact' />
     <StyledContact />
-  </>
+  </Layout>
 );

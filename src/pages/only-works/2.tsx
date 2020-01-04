@@ -1,7 +1,6 @@
 import React from 'react';
 import { P5Canvas, SEO } from 'src/components';
-import { Layout } from 'src/layouts';
-import sketch from 'src/sketches/works/3';
+import sketch from 'src/sketches/works/2';
 import { baseStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
@@ -23,8 +22,8 @@ const StyledWork = styled(Work)`
 `;
 
 export default () => (
-  <Layout>
-    <SEO title='Work3' pathname='/works/3' />
+  <>
+    <SEO title='Work2' pathname='/only-works/2' />
     <StyledWork />
-  </Layout>
+  </>
 );
