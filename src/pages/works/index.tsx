@@ -7,34 +7,28 @@ import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
-const info = ['test', 'test2', 'test3'];
+const workNum = 4;
 
 const Works: React.FCX = ({ className }) => {
   return (
     <main className={className}>
       <ul>
-        {info.map((title, i) => (
+        {[...Array(workNum)].map((_, i) => (
           <li key={i}>
             <iframe src={`/only-works/${i + 1}`} />
-            <div
-              onClick={() => {
-                console.log('test');
-              }}
-            >
+            <div>
               <Link to={`/works/${i + 1}`} />
             </div>
           </li>
         ))}
       </ul>
-      <P5Canvas sketch={sketch} />
     </main>
   );
 };
 
 const StyledWorks = styled(Works)`
   ${baseStyle};
-  ${standardCanvasStyle};
-  padding-top: 10vh;
+
   ul {
     list-style: none;
     li {
