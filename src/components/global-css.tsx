@@ -40,7 +40,7 @@ export const GlobalCSS = () => (
           overflow-x: hidden;
           overscroll-behavior-y: none;
           color: #fff;
-          background-color: #0c0f1c;
+          background-color: #09090f;
 
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
             'Hiragino Sans', 'Noto Sans CJK JP', 'Original Yu Gothic',

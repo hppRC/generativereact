@@ -32,7 +32,7 @@ export const sketch = (p: any) => {
       yoff += 0.1;
     }
 
-    p.background(0);
+    p.background(p.color('#09090f'));
     p.stroke(155);
     p.noFill();
 
