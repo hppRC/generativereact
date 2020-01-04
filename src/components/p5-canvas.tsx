@@ -16,8 +16,12 @@ const P5Canvas: React.FCX<Props> = ({ className, sketch, props }) => {
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       (async () => {
-        const p5 = await _p5.load();
-        new p5.default((p: any) => sketch(p, props), ref.current);
+        _p5
+          .load()
+          .then((p5: any) => {
+            new p5.default((p: any) => sketch(p, props), ref.current);
+          })
+          .catch((error: Error) => console.error(error));
       })();
     }
   }, [sketch, props]);
