@@ -19,7 +19,7 @@ export const sketch = (p: any, props: any) => {
     p.createCanvas(p.windowWidth, p.windowHeight);
     p.colorMode(p.HSB, 360, 100, 100, 100);
     p.angleMode(p.DEGREES);
-    p.background('#121212');
+    p.background('#09090f');
     count = p.int(p.random(1, 15));
     col = count;
     row = p.height / (p.width / col);

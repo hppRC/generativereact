@@ -13,7 +13,7 @@ export const StyledFooter = styled(Footer)`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 10vh;
+  height: 5vh;
 `;
 
 export default StyledFooter;

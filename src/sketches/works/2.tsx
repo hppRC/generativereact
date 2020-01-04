@@ -38,7 +38,7 @@ export const sketch = (p: any) => {
   };
 
   p.draw = () => {
-    p.background(0);
+    p.background('#09090f');
     p.strokeWeight(lineWeight);
     p.push();
     p.translate(p.width / 2, p.height / 2);

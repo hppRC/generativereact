@@ -17,7 +17,7 @@ export const sketch = (p: any) => {
   };
 
   p.draw = () => {
-    p.background(0);
+    p.background('#09090f');
 
     p.stroke(255, agentAlpha);
     for (let i = 0; i < agentCount; i++) {

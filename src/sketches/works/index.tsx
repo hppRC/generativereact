@@ -17,7 +17,7 @@ export const sketch = (p: p5) => {
     for (let i = 0; i < agentCount; i++) {
       agents[i] = new Agent(noiseZRange);
     }
-    p.background(0);
+    p.background('#09090f');
   };
 
   p.draw = () => {
