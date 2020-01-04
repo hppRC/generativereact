@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 
 const Work: React.FCX = ({ className }) => (
   <main className={className}>
-    <P5Canvas sketch={sketch} />
+    <P5Canvas sketch={sketch} props={{}} />
   </main>
 );
 

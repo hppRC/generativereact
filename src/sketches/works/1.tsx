@@ -1,4 +1,4 @@
-export const sketch = (p: any) => {
+export const sketch = (p: any, props: any) => {
   let x: number;
   let y: number;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useMemo, useRef } from 'react';
 
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
@@ -6,28 +6,26 @@ import loadable from '@loadable/component';
 const _p5 = loadable.lib(() => import('p5/lib/p5.min'));
 
 type Props = {
-  sketch: (p: any) => void;
+  sketch: (p: any, props: any) => void;
+  props?: any;
 };
 
-const P5Canvas: React.FCX<Props> = ({ className, sketch, ...props }) => {
-  const [, setP5] = useState();
-  const wrapper = React.createRef<any>();
-  let canvas;
+const P5Canvas: React.FCX<Props> = ({ className, sketch, props }) => {
+  const ref = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       (async () => {
         const p5 = await _p5.load();
-        canvas = new p5.default(sketch, wrapper.current);
-        setP5(canvas);
-        if (canvas.myCustomRedrawAccordingToNewPropsHandler) {
-          canvas.myCustomRedrawAccordingToNewPropsHandler(props);
-        }
+        new p5.default((p: any) => sketch(p, props), ref.current);
       })();
     }
-  }, [sketch]);
+  }, [sketch, props]);
 
-  return <div ref={wrapper} className={className} />;
+  return useMemo(() => <div ref={ref} className={className} />, [
+    sketch,
+    props
+  ]);
 };
 
 export const StyledP5Canvas = styled(P5Canvas)``;
