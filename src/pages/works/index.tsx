@@ -1,7 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { SEO } from 'src/components';
-import baseStyle from 'src/styles/base-style';
+import { P5Canvas, SEO } from 'src/components';
+import sketch from 'src/sketches/works/index';
+import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
@@ -17,12 +18,14 @@ const Works: React.FCX = ({ className }) => {
           </li>
         ))}
       </ul>
+      <P5Canvas sketch={sketch} />
     </main>
   );
 };
 
 const StyledWorks = styled(Works)`
   ${baseStyle};
+  ${standardCanvasStyle};
   padding-top: 10vh;
 `;
 

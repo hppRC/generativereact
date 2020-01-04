@@ -1,5 +1,5 @@
 import React from 'react';
-import { SEO, StyledP5Canvas as P5Canvas } from 'src/components';
+import { P5Canvas, SEO } from 'src/components';
 import sketch from 'src/sketches/works/1';
 import baseStyle from 'src/styles/base-style';
 

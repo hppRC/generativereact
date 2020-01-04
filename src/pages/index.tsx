@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { SEO, StyledP5Canvas as P5Canvas } from 'src/components';
+import { P5Canvas, SEO } from 'src/components';
 import sketch from 'src/sketches/index';
-import { baseStyle } from 'src/styles';
+import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
@@ -12,7 +12,6 @@ const Index: React.FCX = ({ className }) => (
       <section>
         <Link to='/works'>
           <h1>Genarative React</h1>
-          <p>click here</p>
         </Link>
       </section>
       <P5Canvas sketch={sketch} />
@@ -22,22 +21,19 @@ const Index: React.FCX = ({ className }) => (
 
 const StyledIndex = styled(Index)`
   ${baseStyle};
+  ${standardCanvasStyle};
 
   section {
+    position: absolute;
+    bottom: 10vh;
+    right: 10vw;
     a {
       color: #fff;
       text-decoration: none;
     }
     h1 {
-      font-size: 5rem;
+      font-size: 10rem;
     }
-  }
-
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
   }
 `;
 

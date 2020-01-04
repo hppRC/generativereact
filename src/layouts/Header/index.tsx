@@ -5,7 +5,9 @@ import styled from '@emotion/styled';
 
 const Header: React.FCX = ({ className }) => (
   <header className={className}>
-    <h1>Generative React</h1>
+    <Link to='/'>
+      <h1>Generative React</h1>
+    </Link>
     <nav>
       <ul>
         <li>
@@ -30,6 +32,12 @@ export const StyledHeader = styled(Header)`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 2rem;
+
+  > a {
+    color: #fff;
+    text-decoration: none;
+  }
 
   nav {
     padding: 2rem;
@@ -39,6 +47,7 @@ export const StyledHeader = styled(Header)`
       list-style: none;
       li {
         a {
+          word-break: keep-all;
           color: #fff;
           padding: 2rem;
           text-decoration: none;
@@ -47,6 +56,26 @@ export const StyledHeader = styled(Header)`
     }
   }
   z-index: 1000;
+
+  @media screen and (max-width: 1100px) {
+  }
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0.5rem;
+    nav {
+      padding: 0.5rem;
+      ul {
+        li {
+          a {
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-height: 430px) {
+  }
 `;
 
 export default StyledHeader;
