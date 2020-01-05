@@ -1,6 +1,6 @@
 import React from 'react';
 import { P5Canvas, SEO } from 'src/components';
-import sketch from 'src/sources/works/1';
+import sketch from 'src/resources/works/1';
 import { baseStyle } from 'src/styles';
 
 import styled from '@emotion/styled';

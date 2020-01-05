@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { P5Canvas, SEO } from 'src/components';
 import { Layout } from 'src/layouts';
-import sketch from 'src/sources/works/index';
+import sketch from 'src/resources/works/index';
 import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
