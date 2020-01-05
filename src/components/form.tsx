@@ -70,14 +70,14 @@ export const StyledForm = styled(Form)`
     width: 100%;
     padding: 0.3em;
     border: none;
-    border-bottom: 2px solid #fff;
-    transition: 0.5s;
+    border-bottom: 1px solid #fff;
+    transition: border 0.15s;
     :focus {
-      border-bottom: 2px solid #ffffff55;
+      border-bottom: 1px solid #ffffff55;
       outline: none;
     }
     :hover {
-      border-bottom: 2px solid #ffffff95;
+      border-bottom: 1px solid #ffffff95;
       outline: none;
     }
   }
@@ -85,12 +85,15 @@ export const StyledForm = styled(Form)`
   textarea {
     width: 100%;
     color: #ffffff;
-    border: 2px solid #ffffff55;
-    transition: border 0.5s;
+    border: 1px solid #ffffff;
+    transition: border 0.15s;
     margin-top: 1rem;
     :focus {
-      border: 2px solid #ffffff55;
+      border: 1px solid #ffffff55;
       outline: none;
+    }
+    :hover {
+      border: 1px solid #ffffff95;
     }
   }
 
