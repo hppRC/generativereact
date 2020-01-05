@@ -4,7 +4,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Header: React.FCX = ({ className }) => (
-  <header className={className} id='___header'>
+  <header className={className}>
     <Link to='/'>
       <h1>Generative React</h1>
     </Link>
@@ -41,6 +41,7 @@ export const StyledHeader = styled(Header)`
 
   nav {
     padding: 2rem;
+    padding-right: 0;
     ul {
       display: flex;
       justify-content: center;
@@ -49,7 +50,7 @@ export const StyledHeader = styled(Header)`
         a {
           word-break: keep-all;
           color: #fff;
-          padding: 2rem;
+          padding: 2rem 0 2rem 2rem;
           text-decoration: none;
         }
       }
@@ -63,6 +64,7 @@ export const StyledHeader = styled(Header)`
   }
   @media screen and (max-width: 480px) {
     padding: 0.5rem;
+    padding-right: 0;
     nav {
       padding: 0.5rem;
       ul {

@@ -1,12 +1,13 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { SEO } from 'src/components';
+import { P5Canvas, SEO } from 'src/components';
 import { Layout } from 'src/layouts';
-import { baseStyle } from 'src/styles';
+import sketch from 'src/sketches/works/index';
+import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
-const workNum = 4;
+const workNum = 3;
 
 const Works: React.FCX = ({ className }) => {
   return (
@@ -14,43 +15,44 @@ const Works: React.FCX = ({ className }) => {
       <ul>
         {[...Array(workNum)].map((_, i) => (
           <li key={i}>
-            <iframe src={`/only-works/${i + 1}`} />
-            <div>
-              <Link to={`/works/${i + 1}`} />
-            </div>
+            <Link to={`/works/${i + 1}`}>
+              <span>{`${i + 1}`}</span>
+            </Link>
           </li>
         ))}
       </ul>
+      <P5Canvas sketch={sketch} />
     </main>
   );
 };
 
 const StyledWorks = styled(Works)`
   ${baseStyle};
+  ${standardCanvasStyle};
 
   ul {
     list-style: none;
     li {
-      position: relative;
-      display: block;
-      width: 30rem;
-      iframe {
-        z-index: -1;
-        border: none;
-        width: 30rem;
+      border: 1px solid #fff;
+      width: 20rem;
+      margin: 2rem;
+      transition: background-color 0.15s;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        span {
+          display: none;
+        }
       }
 
-      div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+      :hover {
+        background-color: #fff;
 
         a {
-          display: block;
-          width: 100%;
-          height: 100%;
+          color: #09090f;
         }
       }
     }

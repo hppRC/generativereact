@@ -66,33 +66,44 @@ export const StyledForm = styled(Form)`
 
   input[type='text'],
   input[type='email'] {
+    color: #ffffff;
     width: 100%;
     padding: 0.3em;
     border: none;
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid #fff;
     transition: 0.5s;
     :focus {
-      border-bottom: 2px solid #00000055;
+      border-bottom: 2px solid #ffffff55;
+      outline: none;
+    }
+    :hover {
+      border-bottom: 2px solid #ffffff95;
       outline: none;
     }
   }
 
   textarea {
     width: 100%;
-    color: #000000;
-    border: 2px solid #00000055;
+    color: #ffffff;
+    border: 2px solid #ffffff55;
     transition: border 0.5s;
+    margin-top: 1rem;
     :focus {
-      border: 2px solid #00000055;
+      border: 2px solid #ffffff55;
       outline: none;
     }
   }
 
   button {
-    color: #000000;
-    border: 2px solid #00000055;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    transition: opacity 0.15s;
+
+    :hover {
+      opacity: 0.6;
+    }
   }
 `;
 
