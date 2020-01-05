@@ -2,7 +2,7 @@ const config = {
   siteTitle: `Generative React`,
   siteTitleAlt: `Generative React - @hppRC/generativereact`,
   siteHeadline: `Generative React - Experiments about generative arts with React from @hppRC`,
-  siteUrl: `https://generative-react.netlify.com`,
+  siteUrl: `https://generative-react.hpprc.com`,
   siteDescription: `Generative React - some experiments about generative arts and WebGL with React and Gatsby`,
   siteLanguage: `ja`,
   author: `@osaremochi`, // twitter account id
