@@ -37,6 +37,11 @@ export const StyledHeader = styled(Header)`
   > a {
     color: #fff;
     text-decoration: none;
+    transition: opacity 0.15s;
+
+    :hover {
+      opacity: 0.6;
+    }
   }
 
   nav {
@@ -50,8 +55,14 @@ export const StyledHeader = styled(Header)`
         a {
           word-break: keep-all;
           color: #fff;
-          padding: 2rem 0 2rem 2rem;
+          padding: 0 0 2rem 2rem;
           text-decoration: none;
+
+          transition: opacity 0.15s;
+
+          :hover {
+            opacity: 0.6;
+          }
         }
       }
     }
@@ -67,12 +78,8 @@ export const StyledHeader = styled(Header)`
     padding-right: 0;
     nav {
       padding: 0.5rem;
-      ul {
-        li {
-          a {
-            padding: 0.5rem;
-          }
-        }
+      ul li a {
+        padding: 0.5rem;
       }
     }
   }

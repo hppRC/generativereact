@@ -1,7 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { SEO } from 'src/components';
-import { Layout } from 'src/layouts';
 import Sketch from 'src/resources/index';
 import { threeCanvasStyle } from 'src/styles';
 
@@ -27,13 +26,19 @@ const StyledIndex = styled(Index)`
     position: absolute;
     bottom: 10vh;
     right: 10vw;
+    transition: opacity 0.15s;
+
     a {
       word-break: keep-all;
       color: #fff;
       text-decoration: none;
+
       h1 {
         font-size: 10rem;
       }
+    }
+    :hover {
+      opacity: 0.6;
     }
   }
 
@@ -50,9 +55,9 @@ const StyledIndex = styled(Index)`
   }
 `;
 
-export default () => (
-  <Layout>
-    <SEO title='Top' pathname='/' />
+export default (props: any) => (
+  <>
+    <SEO title='Top' pathname={props.path} />
     <StyledIndex />
-  </Layout>
+  </>
 );

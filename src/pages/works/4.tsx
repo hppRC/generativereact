@@ -1,6 +1,5 @@
 import React from 'react';
 import { P5Canvas, SEO } from 'src/components';
-import { Layout } from 'src/layouts';
 import sketch from 'src/resources/works/4';
 import { baseStyle, standardCanvasStyle } from 'src/styles';
 
@@ -17,9 +16,9 @@ const StyledWork = styled(Work)`
   ${standardCanvasStyle};
 `;
 
-export default () => (
-  <Layout>
-    <SEO title='Work4' pathname='/works/4' />
+export default (props: any) => (
+  <>
+    <SEO title='Work4' pathname={props.path} />
     <StyledWork />
-  </Layout>
+  </>
 );
