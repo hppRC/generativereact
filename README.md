@@ -1,28 +1,29 @@
-# GenerativeReact
+# gatsby-starter-hpp
 
-React上でp5.jsを用いてGenerative Artを行うという試み、及びThree.jsを介したWebGLによる表現
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bbee222e-f232-452e-b6ba-d58f6c1af937/deploy-status)](https://app.netlify.com/sites/gatsby-starter-hpp/deploys)
 
+simplest gatsby skelton.
+
+## Recomendation
+
+- node.js  
+    `version: 13.2.0`
+- yarn  
+    `version: 19.2.0`
+
+## Get Started
+
+1. install node modules
 ```
-.
-├── README.md
-├── build
-├── node_mpdules
-├── jsconfig.json
-├── package.json
-├── public
-│   ├── Anton-Regular.ttf
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-├── src
-│   ├── App.js
-│   ├── Works.js
-│   ├── components
-│   │   ├── pages
-│   │   ├── sketches
-│   │   └── themes
-│   ├── componentsList.js
-│   ├── index.js
-│   └── serviceWorker.js
-└── yarn.lock
+$ yarn
 ```
+
+2. start development server
+```
+$ yarn start
+```
+
+thanks to:  
+[https://qiita.com/Takepepe](https://qiita.com/Takepepe/items/144209f860fbe4d5e9bb)  
+[https://www.lekoarts.de/](https://www.lekoarts.de/)  
+[LekoArts/gatsby-themes](https://github.com/LekoArts/gatsby-themes)  
