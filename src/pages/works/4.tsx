@@ -1,19 +1,20 @@
 import React from 'react';
-import { SEO } from 'src/components';
+import { P5Canvas, SEO } from 'src/components';
 import { Layout } from 'src/layouts';
-import Sketch from 'src/resources/works/4';
-import { threeCanvasStyle } from 'src/styles';
+import sketch from 'src/resources/works/4';
+import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
 const Work: React.FCX = ({ className }) => (
   <main className={className}>
-    <Sketch />
+    <P5Canvas sketch={sketch} />
   </main>
 );
 
 const StyledWork = styled(Work)`
-  ${threeCanvasStyle};
+  ${baseStyle};
+  ${standardCanvasStyle};
 `;
 
 export default () => (

@@ -1,9 +1,9 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { P5Canvas, SEO } from 'src/components';
+import { SEO } from 'src/components';
 import { Layout } from 'src/layouts';
-import sketch from 'src/resources/index';
-import { baseStyle, standardCanvasStyle } from 'src/styles';
+import Sketch from 'src/resources/index';
+import { threeCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
@@ -15,14 +15,13 @@ const Index: React.FCX = ({ className }) => (
           <h1>Genarative React</h1>
         </Link>
       </section>
-      <P5Canvas sketch={sketch} />
+      <Sketch />
     </main>
   </>
 );
 
 const StyledIndex = styled(Index)`
-  ${baseStyle};
-  ${standardCanvasStyle};
+  ${threeCanvasStyle};
 
   section {
     position: absolute;
