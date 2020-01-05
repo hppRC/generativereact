@@ -34,7 +34,7 @@ const StyledWorks = styled(Works)`
     list-style: none;
     li {
       border: 1px solid #fff;
-      width: 20rem;
+      width: 30vw;
       margin: 2rem;
       transition: background-color 0.15s;
 

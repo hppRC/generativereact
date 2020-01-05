@@ -1,10 +1,10 @@
 const config = {
-  siteTitle: `Gatsby Starter hpp`,
-  siteTitleAlt: `Gatsby Starter hpp - @hppRC/gatsby-starter-hpp`,
-  siteHeadline: `Gatsby Starter hpp - Gatsby Starter from @hppRC`,
-  siteUrl: `https://gatsby-starter-hpp.netlify.com`,
-  siteDescription: `simple gatsby starter with mdx, typescript, pwa`,
-  siteLanguage: `en`,
+  siteTitle: `Generative React`,
+  siteTitleAlt: `Generative React - @hppRC/generativereact`,
+  siteHeadline: `Generative React - Experiments about generative arts with React from @hppRC`,
+  siteUrl: `https://generative-react.netlify.com`,
+  siteDescription: `Generative React - some experiments about generative arts and WebGL with React and Gatsby`,
+  siteLanguage: `ja`,
   author: `@osaremochi`, // twitter account id
   basePath: `/`
 };

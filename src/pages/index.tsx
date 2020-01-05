@@ -29,11 +29,24 @@ const StyledIndex = styled(Index)`
     bottom: 10vh;
     right: 10vw;
     a {
+      word-break: keep-all;
       color: #fff;
       text-decoration: none;
+      h1 {
+        font-size: 10rem;
+      }
     }
-    h1 {
-      font-size: 10rem;
+  }
+
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 480px) {
+    section {
+      a {
+        h1 {
+          font-size: 6rem;
+        }
+      }
     }
   }
 `;

@@ -15,7 +15,7 @@ export const sketch = (p: any) => {
   let connectionRadius = 250;
 
   p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
+    p.createCanvas(p.min(p.windowWidth, 750), p.min(p.windowHeight, 750));
     p.colorMode(p.RGB, 255, 255, 255, 100);
     p.noFill();
 

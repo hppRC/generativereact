@@ -9,7 +9,11 @@ export const sketch = (p: any) => {
   let flying = 0;
 
   p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL); //レンダーにWEBGLを指定
+    p.createCanvas(
+      p.min(p.windowWidth, 750),
+      p.min(p.windowHeight, 750),
+      p.WEBGL
+    ); //レンダーにWEBGLを指定
     cols = Math.max(Math.ceil(p.width / scl), 30); //ウインドウ幅/タイルの大きさが１行に存在するタイル数
     rows = Math.max(Math.ceil(p.height / scl), 30); //ウインドウの高さ/タイルの大きさが1列に存在するタイル数
     //1次元目: 列数, 2次元目: 行数の配列を作成
