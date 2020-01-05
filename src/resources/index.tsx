@@ -117,16 +117,19 @@ const Thing = () => {
   );
 };
 
-export const Sketch: React.FCX = () => (
-  <Canvas
-    camera={{
-      position: [0, 0, 1 + window.innerHeight / window.innerWidth]
-    }}
-    shadowMap
-  >
-    <Thing />
-    <Controls />
-  </Canvas>
-);
-
+export const Sketch: React.FCX = () => {
+  const val =
+    typeof window === 'undefined' ? 0 : window.innerHeight / window.innerWidth;
+  return (
+    <Canvas
+      camera={{
+        position: [0, 0, 1 + val]
+      }}
+      shadowMap
+    >
+      <Thing />
+      <Controls />
+    </Canvas>
+  );
+};
 export default Sketch;
