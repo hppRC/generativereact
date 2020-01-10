@@ -58,7 +58,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-three-fiber": "^3.0.17",
+    "react-three-fiber": "^4.0.0",
     "three": "^0.112.1",
     "typescript": "^3.7.2",
     "unstated-next": "^1.1.0",
