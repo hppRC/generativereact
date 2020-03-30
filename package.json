@@ -30,11 +30,11 @@
     "three": "^0.115.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.27",
-    "stylelint": "^13.2.1",
-    "stylelint-config-recess-order": "^2.0.4",
-    "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "typescript": "^3.9.0-beta"
+    "@types/react": "16.9.27",
+    "stylelint": "13.2.1",
+    "stylelint-config-recess-order": "2.0.4",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "typescript": "3.9.0-beta"
   }
 }
