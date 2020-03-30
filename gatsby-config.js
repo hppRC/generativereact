@@ -5,7 +5,7 @@ const config = {
   siteUrl: `https://generative-react.hpprc.com`,
   siteDescription: `Generative React - some experiments about generative arts and WebGL with React and Gatsby`,
   siteLanguage: `ja`,
-  author: `@osaremochi`, // twitter account id
+  author: `@hpp_ricecake`, // twitter account id
   basePath: `/`
 };
 
