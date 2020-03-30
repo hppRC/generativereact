@@ -1,4 +1,4 @@
-const config = {
+const siteMetadata = {
   siteTitle: `Generative React`,
   siteTitleAlt: `Generative React - @hppRC/generativereact`,
   siteHeadline: `Generative React - Experiments about generative arts with React from @hppRC`,
@@ -10,9 +10,7 @@ const config = {
 };
 
 module.exports = {
-  siteMetadata: {
-    ...config
-  },
+  siteMetadata,
   plugins: [
     `gatsby-plugin-root-import`,
     `gatsby-plugin-typescript`,
@@ -20,6 +18,7 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-glslify`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -50,15 +49,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
-        siteUrl: config.siteUrl
+        siteUrl: siteMetadata.siteUrl
       }
     },
     `gatsby-plugin-advanced-sitemap`,
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: config.siteUrl,
-        sitemap: `${config.siteUrl}/sitemap.xml`,
+        host: siteMetadata.siteUrl,
+        sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
         policy: [{ userAgent: `*`, allow: `/` }]
       }
     },
@@ -79,9 +78,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: config.siteTitle,
+        name: siteMetadata.siteTitle,
         short_name: `hpp`,
-        description: config.siteDescription,
+        description: siteMetadata.siteDescription,
         Scope: `/`,
         start_url: `/?utm_source=homescreen`,
         background_color: `#ffffff`,

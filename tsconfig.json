@@ -1,26 +1,35 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "module": "commonjs",
-    //jsx: if you do something after transcompiling (Babel etc.), you should set "preserve"
-    "jsx": "preserve",
-    "lib": ["dom", "es2015", "es2017"],
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2020"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "noEmit": true,
-    "allowJs": true,
     "sourceMap": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
+
+    "strict": true,
+
     "esModuleInterop": true,
+
     "isolatedModules": true,
-    "strictNullChecks": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
     "baseUrl": ".",
-    "paths": { "*": ["types/*"], "src/*": ["src/*"] },
+    "paths": {
+      "*": ["./themes/*"], // Capture all absolute paths
+      "types/*": ["./types/*"],
+      "@blog/*": ["./themes/gatsby-theme-blog/*"]
+    },
     "typeRoots": ["types", "node_modules/@types"]
   },
-  "exclude": ["node_modules", "public", ".cache"]
+  "watchOptions": {
+    "watchFile": "dynamicPriorityPolling",
+    "watchDirectory": "dynamicPriorityPolling",
+    "fallbackPolling": "dynamicPriority"
+  }
 }
