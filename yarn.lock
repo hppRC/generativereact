@@ -1074,10 +1074,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hpprc/gatsby-theme-core@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@hpprc/gatsby-theme-core/-/gatsby-theme-core-0.0.2.tgz#d61f1b83204ac56f6b9199328e7a70935018ff37"
-  integrity sha512-eEs5pfjbU4j123cjEH8/YzS+IWHwpWCXJFEDyUCAlpoo2StG4D4IGw0TCjX4feHjDvn3wSv0VlNZdkUuNsihLg==
+"@hpprc/gatsby-theme-core@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@hpprc/gatsby-theme-core/-/gatsby-theme-core-0.0.4.tgz#5bfa752f1f1122c2c4d0a7ce998609ce8b48c83e"
+  integrity sha512-pmTHT4p7FXjjfkyudBrIYNVpiEyFU/9wbqe47ROvpa03gzw7HrQ9OSJF0bBb+B+5QEOz3DRZnnnbm1MxAJHawQ==
   dependencies:
     gatsby "^2.20.8"
     gatsby-plugin-advanced-sitemap "^1.5.2"
