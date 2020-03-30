@@ -1,9 +1,13 @@
+const siteTitle = `Generative React`;
+const siteUrl = `https://generative-react.hpprc.com`;
+const siteDescription = `Generative React - some experiments about generative arts and WebGL with React and Gatsby`;
+
 const siteMetadata = {
-  siteTitle: `Generative React`,
+  siteTitle,
   siteTitleAlt: `Generative React - @hppRC/generativereact`,
   siteHeadline: `Generative React - Experiments about generative arts with React from @hppRC`,
-  siteUrl: `https://generative-react.hpprc.com`,
-  siteDescription: `Generative React - some experiments about generative arts and WebGL with React and Gatsby`,
+  siteUrl,
+  siteDescription,
   siteLanguage: `ja`,
   author: `@hpp_ricecake`, // twitter account id
   basePath: `/`
@@ -12,83 +16,23 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
-    `gatsby-plugin-root-import`,
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-emotion`,
-    `gatsby-plugin-catch-links`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-glslify`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`
+        name: `assets`,
+        path: `${__dirname}/assets`
       }
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `@hpprc/gatsby-theme-core`,
       options: {
-        extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [
-          `gatsby-remark-relative-images`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 690,
-              quality: 90,
-              linkImagesToOriginal: true
-            }
-          }
-        ]
+        siteTitle,
+        siteUrl,
+        siteDescription,
+        iconPath: `./assets/icon.png`,
+        googleAnalyticsTrackingId: `UA-149661454-3`
       }
-    },
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-netlify-cache`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
-      options: {
-        siteUrl: siteMetadata.siteUrl
-      }
-    },
-    `gatsby-plugin-advanced-sitemap`,
-    {
-      resolve: `gatsby-plugin-robots-txt`,
-      options: {
-        host: siteMetadata.siteUrl,
-        sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
-        policy: [{ userAgent: `*`, allow: `/` }]
-      }
-    },
-    {
-      resolve: `gatsby-plugin-webpack-bundle-analyzer`,
-      options: {
-        openAnalyzer: false
-      }
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-        trackingId: `UA-149661454-3`
-      }
-    },
-    // gatsby-plugin-manifest should be described before gatsby-plugin-offline
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: siteMetadata.siteTitle,
-        short_name: `hpp`,
-        description: siteMetadata.siteDescription,
-        Scope: `/`,
-        start_url: `/?utm_source=homescreen`,
-        background_color: `#ffffff`,
-        theme_color: `#ffffff`,
-        display: `standalone`,
-        icon: `./src/images/icon.png`
-      }
-    },
-    `gatsby-plugin-offline`
+    }
   ]
 };

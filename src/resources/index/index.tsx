@@ -1,46 +1,10 @@
-import { useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from 'react-three-fiber';
-import { Controls } from 'src/resources/orbit-controls';
 import * as THREE from 'three';
 
-const vertexSource = `
-precision mediump float;
-uniform float time;
-uniform float randx;
-uniform float randy;
-uniform float randz;
-attribute vec4 color;
-varying vec4 vColor;
-varying vec3 pos;
-
-void main() {
-	vColor = color;
-	pos = vec3(
-		3. * position.x * ( 1. / time + cos(randx + position.x) * position.x * sin(1. + position.z * time) * cos(1.2 * position.x * sin(cos(position.z + 0.01 * sin(0.5 * time + randx))) + sin(cos(0.5 * time) * position.y))),
-		3. * position.y * (1. / time + sin(randy + position.z + 0.5 * time - randy) * position.y * cos(0.001*0.5 * time + position.z + sin(cos(sin(1. - sin(0.5 * time) * cos(0.5 * time)) + sin(0.5 * time)) + sin(cos(0.5 * time)) + 0.5 * time * sin(position.y))) * cos(position.x * cos(sin(0.5 * time)))),
-		3. * position.z * (1. / abs(0.5 * time - 100.) + cos(randz + 0.0025*0.5 * time) * position.z + sin(sin(position.y * sin(cos(0.5 * time) + 0.5 * time * sin(position.y)) * cos(position.x * cos(sin(0.5 * time))))))
-		);
-	gl_PointSize = 1.5;
-	gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-}
-`;
-
-//gl_Position = vec4(tmp.x * sin(tmp.y + tmp.z * time / randx + tmp.y) * atan(time), sin(tmp.y * cos(tmp.z) - 0.001 * time * acos(tmp.x)), tmp.z * sin(atan(tmp.x * time / randx + tmp.y)), 1.0);
-
-const fragmentSource = `
-precision mediump float;
-uniform float time;
-varying vec4 vColor;
-varying vec3 pos;
-void main() {
-	gl_FragColor = vec4(
-		vColor.r * abs(sin(time + pos.z) + cos(pos.x)),
-		vColor.g * abs(cos(time - vColor.b) + sin(pos.z)),
-		vColor.b * abs(sin(time - pos.x) / abs(sin(time - vColor.b))),
-		1.0
-		);
-}
-`;
+import Controls from '../orbit-controls';
+import fragment from './fragment.glsl';
+import vertex from './vertex.glsl';
 
 const Thing = () => {
   const ref = useRef<any>();
@@ -49,9 +13,7 @@ const Thing = () => {
     time: {
       value: 0.0
     },
-    randx: {
-      value: 1 + Math.random()
-    },
+    randx: { value: 1 + Math.random() },
     randy: {
       value: 1 + Math.random()
     },
@@ -107,8 +69,8 @@ const Thing = () => {
       </bufferGeometry>
       <shaderMaterial
         attach='material'
-        vertexShader={vertexSource}
-        fragmentShader={fragmentSource}
+        vertexShader={vertex}
+        fragmentShader={fragment}
         uniforms={uniforms}
         side={THREE.DoubleSide}
         transparent
@@ -118,8 +80,7 @@ const Thing = () => {
 };
 
 export const Sketch: React.FCX = () => {
-  const val =
-    typeof window === 'undefined' ? 0 : window.innerHeight / window.innerWidth;
+  const val = typeof window === 'undefined' ? 0 : window.innerHeight / window.innerWidth;
   return (
     <Canvas
       camera={{

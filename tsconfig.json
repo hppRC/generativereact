@@ -6,7 +6,6 @@
     "lib": ["dom", "es2015", "es2020"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
 
     "strict": true,
 
@@ -21,11 +20,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "*": ["./themes/*"], // Capture all absolute paths
-      "types/*": ["./types/*"],
-      "@blog/*": ["./themes/gatsby-theme-blog/*"]
+      "src/*": ["src/*"]
     },
-    "typeRoots": ["types", "node_modules/@types"]
+    "typeRoots": ["src/types", "node_modules/@types"]
   },
   "watchOptions": {
     "watchFile": "dynamicPriorityPolling",

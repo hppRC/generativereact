@@ -1,10 +1,21 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-type Props = {
+export type Props = {
   site: {
-    siteMetadata: {
-      [key: string]: string;
-    };
+    siteMetadata: Partial<{
+      siteTitle: string;
+      siteTitleAlt: string;
+      siteHeadline: string;
+      siteUrl: string;
+      siteDescription: string;
+      siteLanguage: string;
+      author: string;
+      social: Partial<{
+        twitter: string;
+        github: string;
+        qiita: string;
+      }>;
+    }>;
   };
 };
 

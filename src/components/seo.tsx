@@ -1,7 +1,65 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Helmet from 'react-helmet';
 
-import { useSiteBanner, useSiteMetadata } from '../hooks';
+import { useAnyImage, useSiteBuildtime, useSiteMetadata } from '../hooks';
+
+export type JsonLdConfig = Partial<{
+  '@context': string;
+  '@type': string;
+  inLanguage: string;
+  url: string;
+  headline: string;
+  name: string;
+  alternateName: string;
+  description: string;
+  author: Partial<{
+    '@type': string;
+    name: string;
+    sameas: string;
+    url: string;
+    image: Partial<{
+      '@type': string;
+      url: string;
+      width: number;
+      height: number;
+    }>;
+  }>[];
+  publisher: Partial<{
+    '@type': string;
+    name: string;
+    description: string;
+    logo: Partial<{
+      '@type': string;
+      url: string;
+      width: number;
+      height: number;
+    }>;
+  }>;
+  image:
+    | Partial<{
+        '@type': string;
+        url: string;
+      }>
+    | string;
+  itemListElement: [
+    Partial<{
+      '@type': string;
+      position: number;
+      item: Partial<{
+        '@id': string;
+        name: string;
+        image: string;
+      }>;
+    }>
+  ];
+  datePublished: string;
+  dateModified: string;
+  potentialAction: {};
+  mainEntityOfPage: Partial<{
+    '@type': string;
+    '@id': string;
+  }>;
+}>[];
 
 type Props = {
   title?: string;
@@ -10,14 +68,16 @@ type Props = {
   image?: string;
 };
 
-export const SEO = ({
+const SEO: React.FCX<Props> = ({
   title = '',
   description = '',
   pathname = '',
   image = ''
-}: Props) => {
-  const site = useSiteMetadata();
-  const banner = useSiteBanner();
+}) => {
+  const siteMetadata = useSiteMetadata();
+  const buildTime = useSiteBuildtime();
+  const icon = useAnyImage('icon.png') || useAnyImage('icon.jpg');
+  const banner = useAnyImage('banner.png') || useAnyImage('banner.jpg');
 
   const {
     siteTitle,
@@ -25,15 +85,119 @@ export const SEO = ({
     siteUrl,
     siteDescription: defaultDescription,
     siteLanguage,
-    author
-  } = site;
+    author,
+    social = {}
+  } = siteMetadata;
+
+  const { twitter, github, qiita } = social;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     url: `${siteUrl}${pathname || ``}`,
-    image: `${siteUrl}${image || banner.src}`
+    image: `${siteUrl}${image || banner?.src}`
   };
+
+  // JSON+LD configurations
+  const jsonLdAuthor = [
+    {
+      '@type': 'Person',
+      name: author,
+      description: defaultDescription,
+      image: {
+        '@type': 'ImageObject',
+        url: icon?.src,
+        width: 60,
+        height: 60
+      },
+      url: siteUrl,
+      sameAs: [twitter, github, qiita]
+    },
+    {
+      '@type': 'thing',
+      name: author,
+      sameas: siteTitle,
+      url: siteUrl,
+      image: {
+        '@type': 'ImageObject',
+        url: banner?.src,
+        width: 60,
+        height: 60
+      }
+    }
+  ];
+
+  const publisher = {
+    '@type': 'Organization',
+    name: author,
+    description: defaultDescription,
+    logo: {
+      '@type': 'ImageObject',
+      url: icon?.src,
+      width: 60,
+      height: 60
+    }
+  };
+
+  const jsonLdConfigs: JsonLdConfig = [
+    {
+      '@context': 'http://schema.org',
+      '@type': 'WebSite',
+      inLanguage: siteLanguage,
+      url: siteTitle,
+      name: title,
+      alternateName: seo.title,
+      image: seo.image,
+      description: seo.description,
+      author: jsonLdAuthor,
+      publisher,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${siteUrl}/search?q={q}`,
+        'query-input': 'required name=q'
+      }
+    }
+  ];
+
+  if (pathname !== '/') {
+    jsonLdConfigs.push({
+      '@context': 'http://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@id': seo.url,
+            name: seo.title,
+            image: seo.image
+          }
+        }
+      ]
+    });
+
+    jsonLdConfigs.push({
+      '@context': 'http://schema.org',
+      '@type': 'BlogPosting',
+      url: seo.url,
+      name: title,
+      alternateName: seo.title,
+      headline: title,
+      image: {
+        '@type': 'ImageObject',
+        url: seo.image
+      },
+      description,
+      datePublished: buildTime,
+      dateModified: buildTime,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': seo.url
+      },
+      author: jsonLdAuthor,
+      publisher
+    });
+  }
 
   return (
     <Helmet
@@ -60,8 +224,11 @@ export const SEO = ({
       <meta name='twitter:image' content={seo.image} />
       <meta name='twitter:image:alt' content={seo.description} />
       <meta name='twitter:creator' content={author} />
+      <script type='application/ld+json'>
+        {JSON.stringify(jsonLdConfigs)}
+      </script>
     </Helmet>
   );
 };
 
-export default SEO;
+export default memo(SEO);
