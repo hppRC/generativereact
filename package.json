@@ -30,7 +30,7 @@
     "three": "^0.115.0"
   },
   "devDependencies": {
-    "@types/react": "16.9.29",
+    "@types/react": "16.9.31",
     "stylelint": "13.2.1",
     "stylelint-config-recess-order": "2.0.4",
     "stylelint-config-recommended": "3.0.0",
