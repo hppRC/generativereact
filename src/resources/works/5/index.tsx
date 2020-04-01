@@ -15,23 +15,23 @@ const Thing = () => {
 
   const uniforms = {
     uAspect: {
-      value: window.innerWidth / window.innerHeight
+      value: window.innerWidth / window.innerHeight,
     },
     uTime: {
-      value: 0.0
+      value: 0.0,
     },
     uMouse: {
-      value: mouse
-    }
+      value: mouse,
+    },
   };
 
   useEffect(() => {
-    window.addEventListener('touchmove', handleMove, {
-      passive: false
+    window.addEventListener(`touchmove`, handleMove, {
+      passive: false,
     });
 
     return () => {
-      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener(`touchmove`, handleMove);
     };
     // ↓this line is necessary to avoid a warning about React Hooks dependency↓
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,10 +39,7 @@ const Thing = () => {
 
   const handleMove = (e: any) => {
     e.preventDefault();
-    const newPos = new THREE.Vector2(
-      -1 + (2 * e.pageX) / window.outerWidth,
-      1 - (2 * e.pageY) / window.outerHeight
-    );
+    const newPos = new THREE.Vector2(-1 + (2 * e.pageX) / window.outerWidth, 1 - (2 * e.pageY) / window.outerHeight);
     uniforms.uMouse.value.lerp(newPos, 0.2);
   };
 
@@ -54,22 +51,15 @@ const Thing = () => {
   return (
     <mesh>
       <planeGeometry attach='geometry' args={[2, 2]} />
-      <shaderMaterial
-        attach='material'
-        vertexShader={vertex}
-        fragmentShader={fragment}
-        uniforms={uniforms}
-      />
+      <shaderMaterial attach='material' vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} />
     </mesh>
   );
 };
 
-const Sketch = () => {
-  return (
-    <Canvas camera={{ position: [0, 10, 20] }}>
-      <Thing />
-    </Canvas>
-  );
-};
+const Sketch = () => (
+  <Canvas camera={{ position: [0, 10, 20] }}>
+    <Thing />
+  </Canvas>
+);
 
 export default Sketch;

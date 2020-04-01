@@ -12,12 +12,12 @@ const Contact: React.FCX = ({ className }) => (
 );
 
 const StyledContact = styled(Contact)`
-  ${baseStyle};
+  ${baseStyle}
 `;
 
-export default (props: any) => (
+export default ({ path }: any) => (
   <>
-    <SEO title='Contact' pathname={props.path} />
+    <SEO title='Contact' pathname={path} />
     <StyledContact />
   </>
 );

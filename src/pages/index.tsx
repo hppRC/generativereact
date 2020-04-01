@@ -20,18 +20,18 @@ const Index: React.FCX = ({ className }) => (
 );
 
 const StyledIndex = styled(Index)`
-  ${threeCanvasStyle};
+  ${threeCanvasStyle}
 
   section {
     position: absolute;
-    bottom: 10vh;
     right: 10vw;
+    bottom: 10vh;
     transition: opacity 0.15s;
 
     a {
-      word-break: keep-all;
       color: #fff;
       text-decoration: none;
+      word-break: keep-all;
 
       h1 {
         font-size: 10rem;
@@ -55,9 +55,9 @@ const StyledIndex = styled(Index)`
   }
 `;
 
-export default (props: any) => (
+export default ({ path }: any) => (
   <>
-    <SEO title='Top' pathname={props.path} />
+    <SEO title='Top' pathname={path} />
     <StyledIndex />
   </>
 );

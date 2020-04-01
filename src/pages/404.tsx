@@ -11,12 +11,12 @@ const NotFound: React.FCX = ({ className }) => (
 );
 
 const StyledNotFound = styled(NotFound)`
-  ${baseStyle};
+  ${baseStyle}
 `;
 
-export default (props: any) => (
+export default ({ path }: any) => (
   <>
-    <SEO title='Not Found' pathname={props.path} />
+    <SEO title='Not Found' pathname={path} />
     <StyledNotFound />
   </>
 );

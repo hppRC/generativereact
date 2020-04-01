@@ -1,7 +1,7 @@
 import p5 from 'p5';
 
 export const sketch = (p: p5) => {
-  let agents: any[] = [];
+  const agents: any[] = [];
   const agentCount = 1000;
   const noiseScale = 100;
   const noiseStrength = 10;
@@ -14,10 +14,10 @@ export const sketch = (p: p5) => {
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
-    for (let i = 0; i < agentCount; i++) {
+    for (let i = 0; i < agentCount; i += 1) {
       agents[i] = new Agent(noiseZRange);
     }
-    p.background('#09090f');
+    p.background(`#09090f`);
   };
 
   p.draw = () => {
@@ -26,29 +26,19 @@ export const sketch = (p: p5) => {
     p.rect(0, 0, p.width, p.height);
 
     p.stroke(255, agentAlpha);
-    for (let i = 0; i < agentCount; i++) {
+    for (let i = 0; i < agentCount; i += 1) {
       if (drawMode === 1) {
-        agents[i].update1(
-          strokeWidth,
-          noiseScale,
-          noiseStrength,
-          noiseZVelocity
-        );
+        agents[i].update1(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
       } else {
-        agents[i].update2(
-          strokeWidth,
-          noiseScale,
-          noiseStrength,
-          noiseZVelocity
-        );
+        agents[i].update2(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
       }
     }
   };
 
-  p.keyReleased = function() {
-    if (p.key === '1') drawMode = 1;
-    if (p.key === '2') drawMode = 2;
-    if (p.key === ' ') {
+  p.keyReleased = () => {
+    if (p.key === `1`) drawMode = 1;
+    if (p.key === `2`) drawMode = 2;
+    if (p.key === ` `) {
       const newNoiseSeed = p.floor(p.random(10000));
       p.noiseSeed(newNoiseSeed);
     }
@@ -57,63 +47,70 @@ export const sketch = (p: p5) => {
 
   class Agent {
     private vector: p5.Vector;
+
     private vectorOld: p5.Vector;
+
     private stepSize: number;
+
     private angle: number;
+
     private noiseZ: number;
 
-    constructor(noiseZRange: number) {
+    constructor(localNoiseZRange: number) {
       this.vector = p.createVector(p.random(p.width), p.random(p.height));
       this.vectorOld = this.vector.copy();
       this.stepSize = p.random(1, 5);
       this.angle = 0;
-      this.noiseZ = p.random(noiseZRange);
+      this.noiseZ = p.random(localNoiseZRange);
     }
 
-    update = (strokeWidth: number, noiseZVelocity: number) => {
+    update = (localStrokeWidth: number, localNoiseZVelocity: number) => {
       this.vector.x += p.cos(this.angle) * this.stepSize;
       this.vector.y += p.sin(this.angle) * this.stepSize;
 
-      if (this.vector.x < -10) this.vector.x = this.vectorOld.x = p.width + 10;
-      if (this.vector.x > p.width + 10) this.vector.x = this.vectorOld.x = -10;
-      if (this.vector.y < -10) this.vector.y = this.vectorOld.y = p.height + 10;
-      if (this.vector.y > p.height + 10) this.vector.y = this.vectorOld.y = -10;
+      if (this.vector.x < -10) {
+        this.vectorOld.x = p.width + 10;
+        this.vector.x = this.vectorOld.x;
+      }
+      if (this.vector.x > p.width + 10) {
+        this.vectorOld.x = -10;
+        this.vector.x = this.vectorOld.x;
+      }
+      if (this.vector.y < -10) {
+        this.vectorOld.y = p.height + 10;
+        this.vector.y = this.vectorOld.y;
+      }
+      if (this.vector.y > p.height + 10) {
+        this.vectorOld.y = -10;
+        this.vector.y = this.vectorOld.y;
+      }
 
-      p.strokeWeight(strokeWidth * this.stepSize);
+      p.strokeWeight(localStrokeWidth * this.stepSize);
       p.line(this.vectorOld.x, this.vectorOld.y, this.vector.x, this.vector.y);
       this.vectorOld = this.vector.copy();
-      this.noiseZ += noiseZVelocity;
+      this.noiseZ += localNoiseZVelocity;
     };
 
     update1 = (
-      strokeWidth: number,
-      noiseScale: number,
-      noiseStrength: number,
-      noiseZVelocity: number
+      localStrokeWidth: number,
+      localNoiseScale: number,
+      localNoiseStrength: number,
+      localNoiseZVelocity: number
     ) => {
       this.angle =
-        p.noise(
-          this.vector.x / noiseScale,
-          this.vector.y / noiseScale,
-          this.noiseZ
-        ) * noiseStrength;
-      this.update(strokeWidth, noiseZVelocity);
+        p.noise(this.vector.x / localNoiseScale, this.vector.y / localNoiseScale, this.noiseZ) * localNoiseStrength;
+      this.update(localStrokeWidth, localNoiseZVelocity);
     };
 
     update2 = (
-      strokeWidth: number,
-      noiseScale: number,
-      noiseStrength: number,
-      noiseZVelocity: number
+      localStrokeWidth: number,
+      localNoiseScale: number,
+      localNoiseStrength: number,
+      localNoiseZVelocity: number
     ) => {
-      this.angle =
-        p.noise(
-          this.vector.x / noiseScale,
-          this.vector.y / noiseScale,
-          this.noiseZ
-        ) * p.millis();
-      this.angle = (this.angle - p.floor(this.angle)) * noiseStrength;
-      this.update(strokeWidth, noiseZVelocity);
+      this.angle = p.noise(this.vector.x / localNoiseScale, this.vector.y / localNoiseScale, this.noiseZ) * p.millis();
+      this.angle = (this.angle - p.floor(this.angle)) * localNoiseStrength;
+      this.update(localStrokeWidth, localNoiseZVelocity);
     };
   }
 };

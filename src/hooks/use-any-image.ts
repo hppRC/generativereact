@@ -30,9 +30,7 @@ const useAnyImage = (filename: string): FluidObject | undefined => {
     }
   `);
 
-  const targetImage = allFile.nodes?.find(({ relativePath }) => {
-    return relativePath.includes(filename);
-  });
+  const targetImage = allFile.nodes?.find(({ relativePath }) => relativePath.includes(filename));
 
   return targetImage?.childImageSharp?.fluid;
 };

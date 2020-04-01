@@ -1,6 +1,6 @@
 export const sketch = (p: any) => {
-  let pointCount = 30;
-  let lissajousPoints: any[] = [];
+  const pointCount = 30;
+  const lissajousPoints: any[] = [];
   let freqX = 25;
   let freqY = 19;
   let phi = 90;
@@ -8,11 +8,11 @@ export const sketch = (p: any) => {
   let modFreqX = 1;
   let modFreqY = 1;
 
-  let lineWeight = 0.4;
+  const lineWeight = 0.4;
   let lineColor: any;
-  let lineAlpha = 50;
+  const lineAlpha = 50;
 
-  let connectionRadius = 250;
+  const connectionRadius = 250;
 
   p.setup = () => {
     p.createCanvas(p.min(p.windowWidth, 750), p.min(p.windowHeight, 750));
@@ -25,7 +25,7 @@ export const sketch = (p: any) => {
   };
 
   p.calculateLissajousPoints = () => {
-    for (let i = 0; i <= pointCount; i++) {
+    for (let i = 0; i <= pointCount; i += 1) {
       const angle = p.map(i, 0, pointCount, 0, p.TAU);
 
       let x = p.sin(angle * freqX + p.radians(phi)) * p.cos(angle * modFreqX);
@@ -38,25 +38,20 @@ export const sketch = (p: any) => {
   };
 
   p.draw = () => {
-    p.background('#09090f');
+    p.background(`#09090f`);
     p.strokeWeight(lineWeight);
     p.push();
     p.translate(p.width / 2, p.height / 2);
 
     const shift = 0.0001 * (p.abs((p.millis() % 20000) - 10000) - 5000);
-    for (let i = 0; i < pointCount; i++) {
-      for (let j = 0; j < i; j++) {
+    for (let i = 0; i < pointCount; i += 1) {
+      for (let j = 0; j < i; j += 1) {
         const d = lissajousPoints[i].dist(lissajousPoints[j]);
         const a = p.pow((connectionRadius + 1) / d, 2);
 
         if (d <= connectionRadius) {
           p.stroke(lineColor, a * lineAlpha);
-          p.line(
-            lissajousPoints[i].x,
-            lissajousPoints[i].y,
-            lissajousPoints[j].x,
-            lissajousPoints[j].y
-          );
+          p.line(lissajousPoints[i].x, lissajousPoints[i].y, lissajousPoints[j].x, lissajousPoints[j].y);
         }
         lissajousPoints[i].x += shift;
         lissajousPoints[i].y += shift;
@@ -68,42 +63,31 @@ export const sketch = (p: any) => {
   };
 
   p.keyPressed = () => {
-    if (p.key === 's' || p.key === 'S') p.saveCanvas(p.gd.timestamp(), 'png');
+    if (p.key === `s` || p.key === `S`) p.saveCanvas(p.gd.timestamp(), `png`);
 
-    if (p.key === '1') freqX--;
-    if (p.key === '2') freqX++;
+    if (p.key === `1`) freqX -= 1;
+    if (p.key === `2`) freqX += 1;
     freqX = p.max(freqX, 1);
 
-    if (p.key === '3') freqY--;
-    if (p.key === '4') freqY++;
+    if (p.key === `3`) freqY -= 1;
+    if (p.key === `4`) freqY += 1;
     freqY = p.max(freqY, 1);
 
     if (p.keyCode === p.LEFT_ARROW) phi -= 15;
     if (p.keyCode === p.RIGHT_ARROW) phi += 15;
 
-    if (p.key === '7') modFreqX--;
-    if (p.key === '8') modFreqX++;
+    if (p.key === `7`) modFreqX -= 1;
+    if (p.key === `8`) modFreqX += 1;
     modFreqX = p.max(modFreqX, 1);
 
-    if (p.key === '9') modFreqY--;
-    if (p.key === '0') modFreqY++;
+    if (p.key === `9`) modFreqY -= 1;
+    if (p.key === `0`) modFreqY += 1;
     modFreqY = p.max(modFreqY, 1);
 
     p.calculateLissajousPoints();
     //p.drawLissajous();
 
-    console.log(
-      'freqX: ' +
-        freqX +
-        ', freqY: ' +
-        freqY +
-        ', phi: ' +
-        phi +
-        ', modFreqX: ' +
-        modFreqX +
-        ', modFreqY: ' +
-        modFreqY
-    );
+    console.log(`freqX: ${freqX}, freqY: ${freqY}, phi: ${phi}, modFreqX: ${modFreqX}, modFreqY: ${modFreqY}`);
   };
 };
 

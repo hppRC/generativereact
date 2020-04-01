@@ -6,35 +6,33 @@ import { baseStyle, standardCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
-const workNum = 5;
+const workNum = 6;
 
-const Works: React.FCX = ({ className }) => {
-  return (
-    <main className={className}>
-      <ul>
-        {[...Array(workNum)].map((_, i) => (
-          <li key={i}>
-            <Link to={`/works/${i + 1}`}>
-              <span>{`${i + 1}`}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <P5Canvas sketch={sketch} />
-    </main>
-  );
-};
+const Works: React.FCX = ({ className }) => (
+  <main className={className}>
+    <ul>
+      {[...Array(workNum)].map((_, i) => (
+        <li key={`work${i + 1}`}>
+          <Link to={`/works/${i + 1}`}>
+            <span>{`${i + 1}`}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+    <P5Canvas sketch={sketch} />
+  </main>
+);
 
 const StyledWorks = styled(Works)`
-  ${baseStyle};
-  ${standardCanvasStyle};
+  ${baseStyle}
+  ${standardCanvasStyle}
 
   ul {
     list-style: none;
     li {
-      border: 1px solid #fff;
       width: 30%;
       margin: 2rem;
+      border: 1px solid #fff;
       transition: background-color 0.15s;
 
       a {
@@ -58,9 +56,9 @@ const StyledWorks = styled(Works)`
   }
 `;
 
-export default (props: any) => (
+export default ({ path }: any) => (
   <>
-    <SEO title='Works' pathname={props.path} />
+    <SEO title='Works' pathname={path} />
     <StyledWorks />
   </>
 );

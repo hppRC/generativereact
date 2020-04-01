@@ -1,27 +1,24 @@
 import React from 'react';
+import { SEO } from 'src/components';
+import Sketch from 'src/resources/works/6';
+import { threeCanvasStyle } from 'src/styles';
 
 import styled from '@emotion/styled';
 
-type ContainerProps = {};
-type Props = {} & ContainerProps;
-
-const Component: React.FCX<Props> = ({ className }) => (
-  <div className={className}></div>
+const Work: React.FCX = ({ className }) => (
+  <main className={className}>
+    <Sketch />
+  </main>
 );
 
-const StyledComponent = styled(Component)`
-  @media screen and (max-width: 1100px) {
-  }
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 480px) {
-  }
-  @media screen and (max-height: 430px) {
-  }
+const StyledWork = styled(Work)`
+  ${threeCanvasStyle}
+  z-index: 0 !important;
 `;
 
-const Container: React.FCX<ContainerProps> = props => {
-  return <StyledComponent {...props} />;
-};
-
-export default Container;
+export default ({ path }: any) => (
+  <>
+    <SEO title='Work6' pathname={path} />
+    <StyledWork />
+  </>
+);

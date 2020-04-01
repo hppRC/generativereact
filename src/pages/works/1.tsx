@@ -12,13 +12,13 @@ const Work: React.FCX = ({ className }) => (
 );
 
 const StyledWork = styled(Work)`
-  ${baseStyle};
-  ${standardCanvasStyle};
+  ${baseStyle}
+  ${standardCanvasStyle}
 `;
 
-export default (props: any) => (
+export default ({ path }: any) => (
   <>
-    <SEO title='Work1' pathname={props.path} />
+    <SEO title='Work1' pathname={path} />
     <StyledWork />
   </>
 );

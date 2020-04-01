@@ -28,6 +28,7 @@ export const StyledHeader = styled(Header)`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
 
   display: flex;
   justify-content: space-between;
@@ -53,10 +54,10 @@ export const StyledHeader = styled(Header)`
       list-style: none;
       li {
         a {
-          word-break: keep-all;
-          color: #fff;
           padding: 0 0 2rem 2rem;
+          color: #fff;
           text-decoration: none;
+          word-break: keep-all;
 
           transition: opacity 0.15s;
 
@@ -67,7 +68,6 @@ export const StyledHeader = styled(Header)`
       }
     }
   }
-  z-index: 1000;
 
   @media screen and (max-width: 1100px) {
   }

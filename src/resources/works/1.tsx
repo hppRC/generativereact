@@ -1,4 +1,4 @@
-export const sketch = (p: any, props: any) => {
+export const sketch = (p: any) => {
   let x: number;
   let y: number;
 
@@ -7,24 +7,18 @@ export const sketch = (p: any, props: any) => {
   let col: number;
   let times = 0;
 
-  let colors = [
-    '#6699CCc1',
-    '#FFF275c1',
-    '#FF8C42c1',
-    '#FF3C38c1',
-    '#A23E48c1'
-  ];
+  const colors = [`#6699CCc1`, `#FFF275c1`, `#FF8C42c1`, `#FF3C38c1`, `#A23E48c1`];
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
     p.colorMode(p.HSB, 360, 100, 100, 100);
     p.angleMode(p.DEGREES);
-    p.background('#09090f');
+    p.background(`#09090f`);
     count = p.int(p.random(1, 15));
     col = count;
     row = p.height / (p.width / col);
-    for (let j = 0; j < row; j++) {
-      for (let i = 0; i < col; i++) {
+    for (let j = 0; j < row; j += 1) {
+      for (let i = 0; i < col; i += 1) {
         x = (i * p.width) / col;
         y = (j * p.height) / row;
 
@@ -76,7 +70,7 @@ export const sketch = (p: any, props: any) => {
   };
 
   p.draw = () => {
-    p.background('#12121204');
+    p.background(`#12121204`);
     times += 1;
     if (times > 140) {
       times = 0;
