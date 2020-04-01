@@ -17,7 +17,9 @@ const Thing = () => {
 
   const [positions, colors] = useMemo(() => {
     const particleNum = 100000;
-    const position = [...Array(particleNum * 3)].map((_) => Math.random() * 2.0 - 1.0);
+    const position = Array(particleNum * 3)
+      .fill(undefined)
+      .map((_) => Math.random() * 2.0 - 1.0);
     const color = [...Array(particleNum * 4)].map((_) => Math.random() * 255.0);
 
     return [position, color];
