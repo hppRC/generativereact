@@ -25,7 +25,7 @@
     invariant "^2.2.4"
     semver "^5.5.0"
 
-"@babel/core@>=7.2.2", "@babel/core@^7.8.7":
+"@babel/core@>=7.2.2", "@babel/core@^7.8.7", "@babel/core@^7.9.0":
   version "7.9.0"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.9.0.tgz#ac977b538b77e132ff706f3b8a4dbad09c03c56e"
   integrity sha512-kWc7L0fw1xwvI0zi8OKVBuxRVefwGOrKSQMvrQ3dW+bIIavBY3/NpXmpjMy7bQnLgwgzWQZ8TlM57YHpHNHz4w==
@@ -1045,11 +1045,15 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hpprc/gatsby-theme-core@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@hpprc/gatsby-theme-core/-/gatsby-theme-core-0.0.4.tgz#5bfa752f1f1122c2c4d0a7ce998609ce8b48c83e"
-  integrity sha512-pmTHT4p7FXjjfkyudBrIYNVpiEyFU/9wbqe47ROvpa03gzw7HrQ9OSJF0bBb+B+5QEOz3DRZnnnbm1MxAJHawQ==
+"@hpprc/gatsby-theme-core@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@hpprc/gatsby-theme-core/-/gatsby-theme-core-0.0.9.tgz#907ba2f3e3cdb8f9a6f31ff73654663409c684ac"
+  integrity sha512-FYuoCY4j7Wk/lpZqQKl9DHRVAPzpOpooeUFeJK1xmlISXr5FrDIXyS4NmEArqCyxcck8E+I9EgGvQMlj/+Tw6w==
   dependencies:
+    "@babel/core" "^7.9.0"
+    "@types/react" "^16.9.32"
+    "@types/react-dom" "^16.9.6"
+    "@types/react-helmet" "^5.0.15"
     gatsby "^2.20.8"
     gatsby-plugin-advanced-sitemap "^1.5.2"
     gatsby-plugin-google-analytics "^2.2.2"
@@ -1068,6 +1072,8 @@
     gatsby-transformer-sharp "^2.4.3"
     react "^16.13.1"
     react-dom "^16.13.1"
+    react-helmet "^5.2.1"
+    typescript "^3.9.0-beta"
 
 "@jimp/bmp@^0.9.8":
   version "0.9.8"
@@ -1696,10 +1702,17 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-dom@16.9.6":
+"@types/react-dom@16.9.6", "@types/react-dom@^16.9.6":
   version "16.9.6"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.6.tgz#9e7f83d90566521cc2083be2277c6712dcaf754c"
   integrity sha512-S6ihtlPMDotrlCJE9ST1fRmYrQNNwfgL61UB4I1W7M6kPulUKx9fXAleW5zpdIjUQ4fTaaog8uERezjsGUj9HQ==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-helmet@^5.0.15":
+  version "5.0.15"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.15.tgz#af0370617307e9f062c6aee0f1f5588224ce646e"
+  integrity sha512-CCjqvecDJTXRrHG8aTc2YECcQCl26za/q+NaBRvy/wtm0Uh38koM2dpv2bG1xJV4ckz3t1lm2/5KU6nt2s9BWg==
   dependencies:
     "@types/react" "*"
 
@@ -1707,6 +1720,14 @@
   version "16.9.31"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.31.tgz#6a543529766c8934ec8a89667376c2e73e9e2636"
   integrity sha512-NpYJpNMWScFXtx3A2BJMeew2G3+9SEslVWMdxNJ6DLvxIuxWjY1bizK9q5Y1ujhln31vtjmhjOAYDr9Xx3k9FQ==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.9.32":
+  version "16.9.32"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.32.tgz#f6368625b224604148d1ddf5920e4fefbd98d383"
+  integrity sha512-fmejdp0CTH00mOJmxUPPbWCEBWPvRIL4m8r0qD+BSDUqmutPyGQCHifzMpMzdvZwROdEdL78IuZItntFWgPXHQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -13473,6 +13494,11 @@ typescript@3.8.3:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
+
+typescript@^3.9.0-beta:
+  version "3.9.0-dev.20200405"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.0-dev.20200405.tgz#2cf5c787e9e99043126abcc1cc90f25a3ff8140d"
+  integrity sha512-4z2kgQDaMmhsOkCFCkLBPwgFxjI3Hft7NOzUllQ31YhT5f8oqUjcgpKWL+MX98a0/nVdZqLPTVPMXwNYsl9G+w==
 
 unbzip2-stream@^1.0.9:
   version "1.4.0"
