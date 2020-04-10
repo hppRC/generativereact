@@ -7,3 +7,6 @@
   NODE_VERSION = "13.5.0"
   YARN_FLAGS = "--no-ignore-optional"
   NODE_OPTIONS = "--max_old_space_size=4096"
+
+[[plugins]]
+package = "netlify-plugin-gatsby-cache"
