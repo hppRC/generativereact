@@ -10,7 +10,7 @@ const siteMetadata = {
   siteDescription,
   siteLanguage: `ja`,
   author: `@hpp_ricecake`, // twitter account id
-  basePath: `/`
+  basePath: `/`,
 };
 
 module.exports = {
@@ -21,8 +21,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
-        path: `${__dirname}/assets`
-      }
+        path: `${__dirname}/assets`,
+      },
     },
     {
       resolve: `@hpprc/gatsby-theme-core`,
@@ -31,8 +31,8 @@ module.exports = {
         siteUrl,
         siteDescription,
         iconPath: `./assets/icon.png`,
-        googleAnalyticsTrackingId: `UA-149661454-3`
-      }
-    }
-  ]
+        googleAnalyticsTrackingId: `UA-149661454-3`,
+      },
+    },
+  ],
 };
