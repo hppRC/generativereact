@@ -13,3 +13,4 @@ Experiments on Generative Art in React and where to put the works.
 - react-three-fiber
 - Three.js
 - TypeScript
+- GLSL
