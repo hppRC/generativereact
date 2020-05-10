@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
-import Layout from 'src/layouts';
+import React from 'react';
 
-export const WrapPageElement = ({ element }: { element: ReactNode }) => <Layout>{element}</Layout>;
+export const WrapPageElement: React.ReactNode = ({ element }: { element: React.FCX }) => <>{element}</>;
 
 export default WrapPageElement;

@@ -1,3 +1,4 @@
-import { WrapPageElement } from 'src/components';
+import { WrapPageElement, WrapRootElement } from 'src/components';
 
+export const wrapRootElement = WrapRootElement;
 export const wrapPageElement = WrapPageElement;

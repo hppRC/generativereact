@@ -36,15 +36,15 @@ export const GlobalCSS = () => (
         }
 
         body {
-          font-size: 1.6em;
           overflow-x: hidden;
-          overscroll-behavior-y: none;
-          color: #fff;
-          background-color: #09090f;
 
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP',
             'Original Yu Gothic', 'Yu Gothic', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
             'Noto Sans Emoji';
+          font-size: 1.6em;
+          color: #fff;
+          background-color: #09090f;
+          overscroll-behavior-y: none;
 
           @media screen and (max-width: 768px) {
             font-size: 1.4em;
