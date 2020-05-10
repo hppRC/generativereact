@@ -6,9 +6,9 @@ export const standardCanvasStyle = css`
       position: absolute;
       top: 0;
       left: 0;
+      z-index: -1;
       width: 100vw !important;
       height: 100vh !important;
-      z-index: -1;
     }
   }
 

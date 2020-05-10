@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect } from 'react';
 import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
 import * as THREE from 'three';
@@ -37,6 +38,7 @@ const Thing = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleMove = (e: any) => {
     e.preventDefault();
     const newPos = new THREE.Vector2(-1 + (2 * e.pageX) / window.outerWidth, 1 - (2 * e.pageY) / window.outerHeight);

@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable no-param-reassign */
 import p5 from 'p5';
 
 export const sketch = (p: p5) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const agents: any[] = [];
   const agentCount = 1000;
   const noiseScale = 100;

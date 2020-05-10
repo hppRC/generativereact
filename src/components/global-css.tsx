@@ -42,10 +42,9 @@ export const GlobalCSS = () => (
           color: #fff;
           background-color: #09090f;
 
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-            'Hiragino Sans', 'Noto Sans CJK JP', 'Original Yu Gothic',
-            'Yu Gothic', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-            'Segoe UI Symbol', 'Noto Sans Emoji';
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP',
+            'Original Yu Gothic', 'Yu Gothic', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Sans Emoji';
 
           @media screen and (max-width: 768px) {
             font-size: 1.4em;

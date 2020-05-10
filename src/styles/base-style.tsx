@@ -5,13 +5,13 @@ export const baseStyle = css`
 
   width: 100%;
   max-width: 1400px;
-
-  margin: 0 auto;
   padding: 10vh 2vw 5rem 2vw;
 
+  margin: 0 auto;
+
   h1 {
-    font-size: 4rem;
     padding-bottom: 3rem;
+    font-size: 4rem;
   }
   @media screen and (max-width: 1100px) {
   }

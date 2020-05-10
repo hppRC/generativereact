@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const sketch = (p: any) => {
   let cols: number;
-  let rows: number; //１行, 1列あたりのタイル数を格納
-  const scl = 15; //タイルのサイズを指定
-  let terrain: number[][]; //タイルの情報を格納する2次元配列
+  let rows: number; // １行, 1列あたりのタイル数を格納
+  const scl = 15; // タイルのサイズを指定
+  let terrain: number[][]; // タイルの情報を格納する2次元配列
 
   let xoff;
   let yoff;
@@ -10,10 +11,10 @@ export const sketch = (p: any) => {
   let flying = 0;
 
   p.setup = () => {
-    p.createCanvas(p.min(p.windowWidth, 750), p.min(p.windowHeight, 750), p.WEBGL); //レンダーにWEBGLを指定
-    cols = Math.max(Math.ceil(p.width / scl), 30); //ウインドウ幅/タイルの大きさが１行に存在するタイル数
-    rows = Math.max(Math.ceil(p.height / scl), 30); //ウインドウの高さ/タイルの大きさが1列に存在するタイル数
-    //1次元目: 列数, 2次元目: 行数の配列を作成
+    p.createCanvas(p.min(p.windowWidth, 750), p.min(p.windowHeight, 750), p.WEBGL); // レンダーにWEBGLを指定
+    cols = Math.max(Math.ceil(p.width / scl), 30); // ウインドウ幅/タイルの大きさが１行に存在するタイル数
+    rows = Math.max(Math.ceil(p.height / scl), 30); // ウインドウの高さ/タイルの大きさが1列に存在するタイル数
+    // 1次元目: 列数, 2次元目: 行数の配列を作成
     terrain = new Array(cols).fill(0);
     for (let i = 0; i < cols; i += 1) {
       terrain[i] = new Array(rows).fill(0);

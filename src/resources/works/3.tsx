@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 export const sketch = (p: any) => {
   const agents: any = [];
   const agentCount = 3000;

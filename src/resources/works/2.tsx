@@ -85,8 +85,9 @@ export const sketch = (p: any) => {
     modFreqY = p.max(modFreqY, 1);
 
     p.calculateLissajousPoints();
-    //p.drawLissajous();
+    // p.drawLissajous();
 
+    // eslint-disable-next-line no-console
     console.log(`freqX: ${freqX}, freqY: ${freqY}, phi: ${phi}, modFreqX: ${modFreqX}, modFreqY: ${modFreqY}`);
   };
 };

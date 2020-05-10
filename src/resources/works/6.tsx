@@ -34,6 +34,7 @@ const Content: React.FCX = () => {
   return (
     <>
       {data.map((d, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <a.mesh key={index} {...springs[index]} castShadow receiveShadow>
           <planeBufferGeometry attach='geometry' args={d.args as [number, number, number]} />
           <a.meshStandardMaterial
