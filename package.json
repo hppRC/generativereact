@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/loadable__component": "5.10.0",
-    "@types/node": "13.13.5",
+    "@types/node": "13.13.8",
     "@types/p5": "0.9.0",
     "@types/react": "16.9.35",
     "@types/react-dom": "16.9.6",
