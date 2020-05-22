@@ -39,7 +39,7 @@
     "@types/node": "13.13.8",
     "@types/p5": "0.9.0",
     "@types/react": "16.9.35",
-    "@types/react-dom": "16.9.6",
+    "@types/react-dom": "16.9.8",
     "@typescript-eslint/eslint-plugin": "2.31.0",
     "@typescript-eslint/parser": "2.31.0",
     "eslint": "7.0.0",
