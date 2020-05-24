@@ -16,7 +16,7 @@ const StyledWork = styled(Work)`
   ${standardCanvasStyle}
 `;
 
-export default ({ path }: any) => (
+export default ({ path }: any): JSX.Element => (
   <>
     <SEO title='Work2' pathname={path} />
     <StyledWork />

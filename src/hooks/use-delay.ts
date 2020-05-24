@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useDelay = (waitinigTime: number) => {
+export const useDelay = (waitinigTime: number): boolean => {
   const [waiting, setWaiting] = useState(true);
   useEffect(() => {
     const timerId = setTimeout(() => setWaiting(false), waitinigTime);

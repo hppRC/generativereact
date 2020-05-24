@@ -6,7 +6,7 @@ type UseSiteBuildtime = {
   };
 };
 
-export default () => {
+export default (): string => {
   const { site } = useStaticQuery<UseSiteBuildtime>(graphql`
     query {
       site {

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Global, css } from '@emotion/core';
 
-export const ResetCSS = () => (
+import { css, Global } from '@emotion/core';
+
+export const ResetCSS = (): JSX.Element => (
   <Global
     styles={css`
       /*!
@@ -25,8 +26,8 @@ export const ResetCSS = () => (
       *,
       ::before,
       ::after {
-        background-repeat: no-repeat;
         box-sizing: inherit;
+        background-repeat: no-repeat;
       }
 
       ::before,
@@ -45,8 +46,8 @@ export const ResetCSS = () => (
   # ================================================================= */
 
       hr {
-        overflow: visible; /* Show the overflow in Edge and IE */
         height: 0; /* Add the correct box sizing in Firefox */
+        overflow: visible; /* Show the overflow in Edge and IE */
       }
 
       details,
@@ -67,10 +68,10 @@ export const ResetCSS = () => (
       }
 
       abbr[title] {
-        border-bottom: none; /* Remove the bottom border in Chrome 57 */
         /* Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari */
         text-decoration: underline;
         text-decoration: underline dotted;
+        border-bottom: none; /* Remove the bottom border in Chrome 57 */
       }
 
       a {
@@ -86,7 +87,7 @@ export const ResetCSS = () => (
       kbd,
       pre,
       samp {
-        font-family: monospace, monospace; /* Specify the font family of code elements */
+        font-family: monospace; /* Specify the font family of code elements */
       }
 
       pre {
@@ -101,9 +102,9 @@ export const ResetCSS = () => (
       /* https://gist.github.com/unruthless/413930 */
       sub,
       sup {
+        position: relative;
         font-size: 75%;
         line-height: 0;
-        position: relative;
         vertical-align: baseline;
       }
 
@@ -168,6 +169,15 @@ export const ResetCSS = () => (
         text-transform: none; /* Firefox 40+, Internet Explorer 11- */
       }
 
+      /* Remove the default button styling in all browsers */
+      button,
+      input,
+      select,
+      textarea {
+        background-color: transparent;
+        border-style: none;
+      }
+
       /* Apply cursor pointer to button elements */
       button,
       [type='button'],
@@ -177,13 +187,20 @@ export const ResetCSS = () => (
         cursor: pointer;
       }
 
+      button,
+      html [type='button'],
+      [type='reset'],
+      [type='submit'] {
+        -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */
+      }
+
       /* Remove inner padding and border in Firefox 4+ */
       button::-moz-focus-inner,
       [type='button']::-moz-focus-inner,
       [type='reset']::-moz-focus-inner,
       [type='submit']::-moz-focus-inner {
-        border-style: none;
         padding: 0;
+        border-style: none;
       }
 
       /* Replace focus style removed in the border reset above */
@@ -192,22 +209,6 @@ export const ResetCSS = () => (
       [type='reset']::-moz-focus-inner,
       [type='submit']::-moz-focus-inner {
         outline: 1px dotted ButtonText;
-      }
-
-      button,
-      html [type='button'],
-      [type='reset'],
-      [type='submit'] {
-        -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */
-      }
-
-      /* Remove the default button styling in all browsers */
-      button,
-      input,
-      select,
-      textarea {
-        background-color: transparent;
-        border-style: none;
       }
 
       /* Style select like a standard input */
@@ -225,12 +226,11 @@ export const ResetCSS = () => (
       }
 
       legend {
-        border: 0;
-        color: inherit;
         display: table; /* Correct the text wrapping in Edge and IE */
         max-width: 100%; /* Correct the text wrapping in Edge and IE */
+        color: inherit;
         white-space: normal; /* Correct the text wrapping in Edge and IE */
-        max-width: 100%; /* Correct the text wrapping in Edge 18- and IE */
+        border: 0;
       }
 
       ::-webkit-file-upload-button {

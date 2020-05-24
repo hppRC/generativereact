@@ -35,7 +35,7 @@ const Content: React.FCX = () => {
     <>
       {data.map((d, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <a.mesh key={index} {...springs[index]} castShadow receiveShadow>
+        <a.mesh key={index} {...(springs[index] as any)} castShadow receiveShadow>
           <planeBufferGeometry attach='geometry' args={d.args as [number, number, number]} />
           <a.meshStandardMaterial
             attach='material'
@@ -66,7 +66,7 @@ const Lights = () => (
   </group>
 );
 
-const Sketch = () => (
+const Sketch = (): JSX.Element => (
   <Canvas camera={{ position: [0, 0, 100] }}>
     <Lights />
     <Suspense fallback={null}>

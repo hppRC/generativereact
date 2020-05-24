@@ -54,7 +54,7 @@ export type JsonLdConfig = Partial<{
   ];
   datePublished: string;
   dateModified: string;
-  potentialAction: {};
+  potentialAction: Record<string, unknown>;
   mainEntityOfPage: Partial<{
     '@type': string;
     '@id': string;
@@ -87,7 +87,7 @@ const SEO: React.FCX<Props> = ({ title = ``, description = ``, pathname = ``, im
     siteLanguage,
     author,
     social = {},
-  } = siteMetadata;
+  } = siteMetadata ?? {};
 
   const { twitter, github, qiita } = social;
 

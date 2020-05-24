@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-use-before-define */
-export const sketch = (p: any) => {
+export const sketch = (p: any): void => {
   const agents: any = [];
   const agentCount = 3000;
   const noiseScale = 100;
@@ -9,37 +10,6 @@ export const sketch = (p: any) => {
   const agentAlpha = 90;
   const strokeWidth = 1;
   let count = 0;
-
-  p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
-    for (let i = 0; i < agentCount; i += 1) {
-      agents[i] = new Agent(noiseZRange);
-    }
-  };
-
-  p.draw = () => {
-    p.background(`#09090f`);
-
-    p.stroke(255, agentAlpha);
-    for (let i = 0; i < agentCount; i += 1) {
-      agents[i].update1(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
-    }
-    count += 1;
-    if (count >= 300) {
-      count = 0;
-      const newNoiseSeed = p.floor(p.random(10000));
-      p.noiseSeed(newNoiseSeed);
-    }
-  };
-
-  p.keyReleased = () => {
-    if (p.key === `s` || p.key === `S`) p.saveCanvas(p.gd.timestamp(), `png`);
-    if (p.key === ` `) {
-      const newNoiseSeed = p.floor(p.random(10000));
-      p.noiseSeed(newNoiseSeed);
-    }
-    if (p.keyCode === p.DELETE || p.keyCode === p.BACKSPACE) p.background(0);
-  };
 
   class Agent {
     private vector: any;
@@ -98,6 +68,37 @@ export const sketch = (p: any) => {
       this.update(localStrokeWidth, localNoiseZVelocity);
     };
   }
+
+  p.setup = () => {
+    p.createCanvas(p.windowWidth, p.windowHeight);
+    for (let i = 0; i < agentCount; i += 1) {
+      agents[i] = new Agent(noiseZRange);
+    }
+  };
+
+  p.draw = () => {
+    p.background(`#09090f`);
+
+    p.stroke(255, agentAlpha);
+    for (let i = 0; i < agentCount; i += 1) {
+      agents[i].update1(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
+    }
+    count += 1;
+    if (count >= 300) {
+      count = 0;
+      const newNoiseSeed = p.floor(p.random(10000));
+      p.noiseSeed(newNoiseSeed);
+    }
+  };
+
+  p.keyReleased = () => {
+    if (p.key === `s` || p.key === `S`) p.saveCanvas(p.gd.timestamp(), `png`);
+    if (p.key === ` `) {
+      const newNoiseSeed = p.floor(p.random(10000));
+      p.noiseSeed(newNoiseSeed);
+    }
+    if (p.keyCode === p.DELETE || p.keyCode === p.BACKSPACE) p.background(0);
+  };
 };
 
 export default sketch;

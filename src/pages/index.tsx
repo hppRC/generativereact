@@ -55,7 +55,7 @@ const StyledIndex = styled(Index)`
   }
 `;
 
-export default ({ path }: any) => (
+export default ({ path }: any): JSX.Element => (
   <>
     <SEO title='Top' pathname={path} />
     <StyledIndex />

@@ -14,7 +14,7 @@ const StyledNotFound = styled(NotFound)`
   ${baseStyle}
 `;
 
-export default ({ path }: any) => (
+export default ({ path }: any): JSX.Element => (
   <>
     <SEO title='Not Found' pathname={path} />
     <StyledNotFound />

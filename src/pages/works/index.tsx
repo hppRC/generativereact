@@ -56,7 +56,7 @@ const StyledWorks = styled(Works)`
   }
 `;
 
-export default ({ path }: any) => (
+export default ({ path }: any): JSX.Element => (
   <>
     <SEO title='Works' pathname={path} />
     <StyledWorks />

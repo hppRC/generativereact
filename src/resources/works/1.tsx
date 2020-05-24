@@ -1,4 +1,5 @@
-export const sketch = (p: any) => {
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+export const sketch = (p: any): void => {
   let x: number;
   let y: number;
 

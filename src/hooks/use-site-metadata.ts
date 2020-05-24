@@ -1,28 +1,34 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export type Props = {
-  site: {
-    siteMetadata: Partial<{
-      siteTitle: string;
-      siteTitleAlt: string;
-      siteHeadline: string;
-      siteUrl: string;
-      siteDescription: string;
-      siteLanguage: string;
-      author: string;
-      social: Partial<{
-        twitter: string;
-        github: string;
-        qiita: string;
-      }>;
-    }>;
-  };
-};
+type Props = Readonly<{
+  site: Partial<{
+    siteMetadata: SiteMetadata;
+  }>;
+}>;
+
+type SiteMetadata =
+  | Readonly<
+      Partial<{
+        siteTitle: string;
+        siteTitleAlt: string;
+        siteHeadline: string;
+        siteUrl: string;
+        siteDescription: string;
+        siteLanguage: string;
+        author: string;
+        social: Partial<{
+          twitter: string;
+          github: string;
+          qiita: string;
+        }>;
+      }>
+    >
+  | undefined;
 
 /**
  * ex. const {siteTitle, siteUrl} = useSiteMetadata();
  */
-export const useSiteMetadata = () => {
+export default (): SiteMetadata => {
   const data = useStaticQuery<Props>(graphql`
     query {
       site {
@@ -41,5 +47,3 @@ export const useSiteMetadata = () => {
 
   return data.site.siteMetadata;
 };
-
-export default useSiteMetadata;

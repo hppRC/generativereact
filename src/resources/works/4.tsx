@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const sketch = (p: any) => {
+export const sketch = (p: any): void => {
   let cols: number;
   let rows: number; // １行, 1列あたりのタイル数を格納
   const scl = 15; // タイルのサイズを指定

@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import p5 from 'p5';
 
-export const sketch = (p: p5) => {
+export const sketch = (p: p5): void => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const agents: any[] = [];
   const agentCount = 1000;
@@ -14,39 +14,6 @@ export const sketch = (p: p5) => {
   const agentAlpha = 90;
   const strokeWidth = 0.1;
   let drawMode = 1;
-
-  p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
-    for (let i = 0; i < agentCount; i += 1) {
-      agents[i] = new Agent(noiseZRange);
-    }
-    p.background(`#09090f`);
-  };
-
-  p.draw = () => {
-    p.fill(0, overlayAlpha);
-    p.noStroke();
-    p.rect(0, 0, p.width, p.height);
-
-    p.stroke(255, agentAlpha);
-    for (let i = 0; i < agentCount; i += 1) {
-      if (drawMode === 1) {
-        agents[i].update1(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
-      } else {
-        agents[i].update2(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
-      }
-    }
-  };
-
-  p.keyReleased = () => {
-    if (p.key === `1`) drawMode = 1;
-    if (p.key === `2`) drawMode = 2;
-    if (p.key === ` `) {
-      const newNoiseSeed = p.floor(p.random(10000));
-      p.noiseSeed(newNoiseSeed);
-    }
-    if (p.keyCode === p.DELETE || p.keyCode === p.BACKSPACE) p.background(255);
-  };
 
   class Agent {
     private vector: p5.Vector;
@@ -116,6 +83,39 @@ export const sketch = (p: p5) => {
       this.update(localStrokeWidth, localNoiseZVelocity);
     };
   }
+
+  p.setup = () => {
+    p.createCanvas(p.windowWidth, p.windowHeight);
+    for (let i = 0; i < agentCount; i += 1) {
+      agents[i] = new Agent(noiseZRange);
+    }
+    p.background(`#09090f`);
+  };
+
+  p.draw = () => {
+    p.fill(0, overlayAlpha);
+    p.noStroke();
+    p.rect(0, 0, p.width, p.height);
+
+    p.stroke(255, agentAlpha);
+    for (let i = 0; i < agentCount; i += 1) {
+      if (drawMode === 1) {
+        agents[i].update1(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
+      } else {
+        agents[i].update2(strokeWidth, noiseScale, noiseStrength, noiseZVelocity);
+      }
+    }
+  };
+
+  p.keyReleased = () => {
+    if (p.key === `1`) drawMode = 1;
+    if (p.key === `2`) drawMode = 2;
+    if (p.key === ` `) {
+      const newNoiseSeed = p.floor(p.random(10000));
+      p.noiseSeed(newNoiseSeed);
+    }
+    if (p.keyCode === p.DELETE || p.keyCode === p.BACKSPACE) p.background(255);
+  };
 };
 
 export default sketch;

@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 extend({ OrbitControls });
 
-export const Controls = ({ dampingFactor = 0.5, rotateSpeed = 0.5 }) => {
+export const Controls = ({ dampingFactor = 0.5, rotateSpeed = 0.5 }): JSX.Element => {
   const controls = useRef<any>();
   const { camera, gl } = useThree();
   useFrame(() => controls.current.update());

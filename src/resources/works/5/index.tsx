@@ -25,6 +25,12 @@ const Thing = () => {
       value: mouse,
     },
   };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleMove = (e: any) => {
+    e.preventDefault();
+    const newPos = new THREE.Vector2(-1 + (2 * e.pageX) / window.outerWidth, 1 - (2 * e.pageY) / window.outerHeight);
+    uniforms.uMouse.value.lerp(newPos, 0.2);
+  };
 
   useEffect(() => {
     window.addEventListener(`touchmove`, handleMove, {
@@ -37,13 +43,6 @@ const Thing = () => {
     // ↓this line is necessary to avoid a warning about React Hooks dependency↓
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleMove = (e: any) => {
-    e.preventDefault();
-    const newPos = new THREE.Vector2(-1 + (2 * e.pageX) / window.outerWidth, 1 - (2 * e.pageY) / window.outerHeight);
-    uniforms.uMouse.value.lerp(newPos, 0.2);
-  };
 
   useFrame(() => {
     uniforms.uTime.value = clock.getElapsedTime();
@@ -58,7 +57,7 @@ const Thing = () => {
   );
 };
 
-const Sketch = () => (
+const Sketch = (): JSX.Element => (
   <Canvas camera={{ position: [0, 10, 20] }}>
     <Thing />
   </Canvas>

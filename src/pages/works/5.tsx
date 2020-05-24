@@ -16,7 +16,7 @@ const StyledWork = styled(Work)`
   z-index: 0 !important;
 `;
 
-export default ({ path }: any) => (
+export default ({ path }: any): JSX.Element => (
   <>
     <SEO title='Work5' pathname={path} />
     <StyledWork />

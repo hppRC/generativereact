@@ -9,7 +9,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 extend({ OrbitControls });
 
 declare module 'react' {
-  type FCX<P = {}> = React.FunctionComponent<P & { className?: string }>;
+  type FCX<P = Record<string, unknown>> = React.FunctionComponent<P & { className?: string }>;
 }
 
 declare global {

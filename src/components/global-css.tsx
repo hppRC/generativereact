@@ -2,7 +2,7 @@ import React from 'react';
 
 import { css, Global } from '@emotion/core';
 
-export const GlobalCSS = () => (
+export const GlobalCSS = (): JSX.Element => (
   <Global
     styles={css`
       /* reffer to this: https://qiita.com/RinoTsuka/items/b30e03ce10aa38ac2a10#_reference-aab4ed4b3d365dfead76 */
