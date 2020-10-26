@@ -14230,10 +14230,10 @@ stylelint-declaration-block-no-ignored-properties@2.3.0:
   dependencies:
     postcss "^7.0.27"
 
-stylelint-no-unsupported-browser-features@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/stylelint-no-unsupported-browser-features/-/stylelint-no-unsupported-browser-features-4.1.1.tgz#e57c5ea88b881d9bef18f80aeb76a04226546e1a"
-  integrity sha512-K8ae6JBlLJBg0+ghhApVig0Mqykx2pNdoAx+Cd3MyPRdZGfHpa0O2EUsLc0YjShPTi/qp1BBIQXJ3cwbvhr8Hg==
+stylelint-no-unsupported-browser-features@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/stylelint-no-unsupported-browser-features/-/stylelint-no-unsupported-browser-features-4.1.2.tgz#b043d43f3262cab12a2338f0a299efec72848615"
+  integrity sha512-96Hai75nIjpaxmi+o7YynGoUbhfZbCCh/BTfdUQOeNq5UHLtY/yhSCZHV1IQt3damtIK1WHgWiYQg4Jdp1VPCg==
   dependencies:
     doiuse "^4.2.0"
     lodash "^4.17.15"
