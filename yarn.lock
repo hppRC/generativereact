@@ -12461,10 +12461,10 @@ react-three-fiber@^4.0.23:
     tiny-emitter "^2.1.0"
     utility-types "^3.10.0"
 
-react-use-gesture@^7.0.0-beta.11:
-  version "7.0.15"
-  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-7.0.15.tgz#93c651e916a31cfb12d079e7fa1543d5b0511e07"
-  integrity sha512-vHQkaa7oUbSDTAcFk9huQXa7E8KPrZH91erPuOMoqZT513qvtbb/SzTQ33lHc71/kOoJkMbzOkc4uoA4sT7Ogg==
+react-use-gesture@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-8.0.0.tgz#0ce80c602625816b39bf5d3171b9efd29d70eb69"
+  integrity sha512-Xn4gWYn7GZPTPj1GL8gi8SvI4CJX77ia8tCkKIt7m2hBuXgHeNeRR9QwRiuPZy6xgtLBddPk5O5PLccNxuwFWA==
 
 react-use-measure@^2.0.0:
   version "2.0.0"
