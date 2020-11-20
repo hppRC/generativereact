@@ -38,7 +38,7 @@
     "@types/loadable__component": "5.13.1",
     "@types/node": "13.13.8",
     "@types/p5": "0.9.1",
-    "@types/react": "16.9.56",
+    "@types/react": "16.14.0",
     "@types/react-dom": "16.9.9",
     "@typescript-eslint/eslint-plugin": "4.8.1",
     "@typescript-eslint/parser": "4.8.1",
