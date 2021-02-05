@@ -35,7 +35,7 @@
     "three": "^0.116.0"
   },
   "devDependencies": {
-    "@types/loadable__component": "5.13.1",
+    "@types/loadable__component": "5.13.2",
     "@types/node": "13.13.8",
     "@types/p5": "0.9.1",
     "@types/react": "16.14.0",
