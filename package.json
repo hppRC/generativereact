@@ -32,7 +32,7 @@
     "react-spring": "^9.0.0-beta.34",
     "react-three-fiber": "^4.0.23",
     "react-use-gesture": "^7.0.0-beta.11",
-    "three": "^0.116.0"
+    "three": "^0.129.0"
   },
   "devDependencies": {
     "@types/loadable__component": "5.13.2",
